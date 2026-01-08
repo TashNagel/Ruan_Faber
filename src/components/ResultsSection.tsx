@@ -246,7 +246,15 @@ const ResultsSection = () => {
             <div className="p-6 border-b border-border">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-6 bg-gradient-to-r from-green-600 via-yellow-500 to-red-600 rounded" />
+                  <div className="w-8 h-6 rounded overflow-hidden flex flex-col">
+                    <div className="h-1/3 bg-[hsl(0,65%,45%)]" />
+                    <div className="h-1/3 bg-white flex items-center justify-center">
+                      <div className="w-3 h-2 bg-[hsl(120,50%,30%)] flex items-center justify-center">
+                        <div className="w-1 h-1 bg-[hsl(50,85%,50%)]" />
+                      </div>
+                    </div>
+                    <div className="h-1/3 bg-[hsl(220,70%,35%)]" />
+                  </div>
                   <div>
                     <h3 className="font-display text-xl">NWS Championships</h3>
                     <p className="text-sm text-muted-foreground">Dec 6-9, 2025</p>
