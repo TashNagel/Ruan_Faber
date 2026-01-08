@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import heroImage from "@/assets/hero-swimmer.jpg";
+import heroImage from "@/assets/hero-swimmer.png";
 
 const HeroSection = () => {
   return (
@@ -47,8 +47,8 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="font-display text-6xl md:text-8xl lg:text-9xl tracking-wide mb-6 glow-text"
         >
-          <span className="text-foreground">ALEX</span>{" "}
-          <span className="text-gradient">WATERS</span>
+          <span className="text-foreground">RUAN</span>{" "}
+          <span className="text-gradient">FABER</span>
         </motion.h1>
 
         <motion.p
