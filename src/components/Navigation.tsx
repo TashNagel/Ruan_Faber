@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
+  { href: "#results", label: "Results" },
   { href: "#achievements", label: "Achievements" },
   { href: "#about", label: "About" },
   { href: "#contact", label: "Contact" },
