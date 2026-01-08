@@ -34,7 +34,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <a href="#" className="font-display text-2xl tracking-wider">
-            <span className="text-foreground">ALEX</span>
+            <span className="text-foreground">RUAN</span>
             <span className="text-primary">.</span>
           </a>
 
