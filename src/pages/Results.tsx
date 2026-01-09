@@ -1,0 +1,356 @@
+import { motion } from "framer-motion";
+import { Search, ChevronDown } from "lucide-react";
+import { useState, useMemo } from "react";
+import { Link } from "react-router-dom";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Input } from "@/components/ui/input";
+
+// All competitions data
+const allCompetitions = [
+  {
+    id: "nws-2025",
+    name: "NWS Championships",
+    status: "Completed",
+    date: "Dec 6-9, 2025",
+    location: "Potchefstroom, NW, RSA",
+    year: "2025",
+    results: [
+      { event: "50 L Fly", time: "27.84", imp: null, place: "2nd" },
+      { event: "50 L Free", time: "26.26", imp: null, place: "2nd" },
+      { event: "100 L Free", time: "58.55", imp: null, place: "3rd" },
+    ]
+  },
+  {
+    id: "nws-age-group-2",
+    name: "NWS Age Group 2",
+    status: "Completed",
+    date: "Oct 19, 2025",
+    location: "Phokeng, NW, RSA",
+    year: "2025",
+    results: [
+      { event: "50 S Fly", time: "27.49", imp: "-0.03", place: "1st" },
+      { event: "100 S Free", time: "58.69", imp: "+0.87", place: "2nd" },
+      { event: "50 S Back", time: "29.92", imp: "+0.03", place: "1st" },
+    ]
+  },
+  {
+    id: "nws-age-group-1-2025",
+    name: "NWS Age Group 1 2025",
+    status: "Completed",
+    date: "Oct 18, 2025",
+    location: "Phokeng, NW, RSA",
+    year: "2025",
+    results: [
+      { event: "50 S Free", time: "26.24", imp: "+0.39", place: "1st" },
+      { event: "100 S Fly", time: "1:03.05", imp: "+1.60", place: "1st" },
+      { event: "100 S Breast", time: "1:17.03", imp: "+2.32", place: "2nd" },
+    ]
+  },
+  {
+    id: "nw-short-course",
+    name: "NW Short Course Championships",
+    status: "Completed",
+    date: "Oct 4-6, 2025",
+    location: "Phokeng, NW, RSA",
+    year: "2025",
+    results: [
+      { event: "100 S Fly", time: "1:01.45", imp: null, place: "1st" },
+      { event: "100 S Free", time: "57.82", imp: null, place: "3rd" },
+      { event: "50 S Fly", time: "27.52", imp: null, place: "1st" },
+    ]
+  },
+  {
+    id: "sa-schools-2025",
+    name: "SA Schools Championship",
+    status: "Completed",
+    date: "Apr 5-7, 2025",
+    location: "Bloemfontein, FS, RSA",
+    year: "2025",
+    results: [
+      { event: "50 L Fly", time: "27.58", imp: "-0.61", place: "4th" },
+      { event: "100 L Back", time: "1:06.59", imp: "+0.05", place: "5th" },
+      { event: "50 L Back", time: "30.58", imp: "+0.24", place: "8th" },
+    ]
+  },
+  {
+    id: "sa-level-3-regional",
+    name: "SA Level 3 Regional Age Group",
+    status: "Completed",
+    date: "Mar 20-23, 2025",
+    location: "NTS, GP, RSA",
+    year: "2025",
+    results: [
+      { event: "50 L Free", time: "26.09", imp: "-1.19", place: "3rd" },
+      { event: "50 L Fly", time: "28.19", imp: "-0.42", place: "4th" },
+      { event: "100 L Free", time: "58.97", imp: "-0.39", place: "8th" },
+    ]
+  },
+  {
+    id: "cga-summer-gala",
+    name: "CGA Summer Gala #4 Level",
+    status: "Completed",
+    date: "Jan 25, 2025",
+    location: "RSA",
+    year: "2025",
+    results: [
+      { event: "50 L Fly", time: "28.75", imp: "+0.14", place: "1st" },
+      { event: "100 L Fly", time: "1:05.51", imp: "-1.83", place: "1st" },
+      { event: "200 L Free", time: "2:16.66", imp: "+1.30", place: "2nd" },
+    ]
+  },
+  {
+    id: "nws-championships-2024",
+    name: "NWS Championships",
+    status: "Completed",
+    date: "Dec 7-10, 2024",
+    location: "Potchefstroom, NW, RSA",
+    year: "2024",
+    results: [
+      { event: "100 L Free", time: "59.36", imp: "-0.87", place: "2nd" },
+      { event: "50 L Fly", time: "28.61", imp: "-0.42", place: "2nd" },
+      { event: "50 L Free", time: "27.28", imp: "-0.18", place: "2nd" },
+    ]
+  },
+  {
+    id: "nws-age-group-3-4",
+    name: "NWS Age Group 3 + 4",
+    status: "Completed",
+    date: "Nov 23-24, 2024",
+    location: "Potchefstroom, NW, RSA",
+    year: "2024",
+    results: [
+      { event: "100 L Free", time: "1:00.23", imp: null, place: "2nd" },
+      { event: "50 L Fly", time: "29.03", imp: null, place: "2nd" },
+      { event: "50 L Free", time: "27.46", imp: null, place: "1st" },
+    ]
+  },
+];
+
+const SouthAfricanFlag = () => (
+  <div className="w-8 h-6 rounded overflow-hidden flex flex-col shrink-0">
+    <div className="h-1/3 bg-[hsl(0,65%,45%)]" />
+    <div className="h-1/3 bg-white flex items-center justify-center">
+      <div className="w-3 h-2 bg-[hsl(120,50%,30%)] flex items-center justify-center">
+        <div className="w-1 h-1 bg-[hsl(50,85%,50%)]" />
+      </div>
+    </div>
+    <div className="h-1/3 bg-[hsl(220,70%,35%)]" />
+  </div>
+);
+
+const CompetitionCard = ({ competition }: { competition: typeof allCompetitions[0] }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    className="bg-card border border-border rounded-lg overflow-hidden hover:border-primary/30 transition-colors"
+  >
+    <div className="p-4 border-b border-border">
+      <div className="flex items-start gap-3">
+        <SouthAfricanFlag />
+        <div className="flex-1 min-w-0">
+          <h3 className="font-semibold text-foreground text-sm truncate">{competition.name}</h3>
+          <p className="text-xs text-muted-foreground">
+            <span className="text-primary">{competition.status}</span> • {competition.date}
+          </p>
+          <p className="text-xs text-muted-foreground truncate">{competition.location}</p>
+        </div>
+      </div>
+    </div>
+    
+    <div className="overflow-x-auto">
+      <table className="w-full text-sm">
+        <thead>
+          <tr className="border-b border-border/50">
+            <th className="text-left py-2 px-3 text-xs font-medium text-muted-foreground">Event</th>
+            <th className="text-right py-2 px-3 text-xs font-medium text-muted-foreground">Time</th>
+            <th className="text-right py-2 px-3 text-xs font-medium text-muted-foreground">Imp</th>
+            <th className="text-right py-2 px-3 text-xs font-medium text-muted-foreground">Place</th>
+          </tr>
+        </thead>
+        <tbody>
+          {competition.results.map((result, index) => (
+            <tr key={index} className="border-b border-border/30 last:border-0">
+              <td className="py-2 px-3 text-muted-foreground">{result.event}</td>
+              <td className="text-right py-2 px-3">
+                <span className="text-primary font-mono">{result.time}</span>
+              </td>
+              <td className="text-right py-2 px-3">
+                {result.imp ? (
+                  <span className={`font-mono ${
+                    result.imp.startsWith('-') ? 'text-green-500' : 
+                    result.imp.startsWith('+') ? 'text-amber-500' : 
+                    'text-muted-foreground'
+                  }`}>
+                    {result.imp}
+                  </span>
+                ) : (
+                  <span className="text-muted-foreground">–</span>
+                )}
+              </td>
+              <td className="text-right py-2 px-3">
+                <span className={`font-medium ${
+                  result.place === "1st" ? "text-yellow-400" :
+                  result.place === "2nd" ? "text-gray-300" :
+                  result.place === "3rd" ? "text-amber-600" :
+                  "text-muted-foreground"
+                }`}>
+                  {result.place}
+                </span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </motion.div>
+);
+
+const Results = () => {
+  const [selectedYear, setSelectedYear] = useState<string>("all");
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const years = useMemo(() => {
+    const uniqueYears = [...new Set(allCompetitions.map(c => c.year))];
+    return uniqueYears.sort((a, b) => b.localeCompare(a));
+  }, []);
+
+  const filteredCompetitions = useMemo(() => {
+    return allCompetitions.filter(comp => {
+      const matchesYear = selectedYear === "all" || comp.year === selectedYear;
+      const matchesSearch = comp.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                           comp.location.toLowerCase().includes(searchQuery.toLowerCase());
+      return matchesYear && matchesSearch;
+    });
+  }, [selectedYear, searchQuery]);
+
+  return (
+    <div className="min-h-screen bg-background">
+      {/* Header */}
+      <header className="bg-background/80 backdrop-blur-lg border-b border-border sticky top-0 z-50">
+        <div className="container mx-auto px-6">
+          <div className="flex items-center justify-between h-16">
+            <Link to="/" className="font-display text-2xl tracking-wider">
+              <span className="text-foreground">RUAN</span>
+              <span className="text-primary">.</span>
+            </Link>
+            <Link 
+              to="/" 
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              ← Back to Home
+            </Link>
+          </div>
+        </div>
+      </header>
+
+      {/* Main Content */}
+      <main className="container mx-auto px-6 py-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-8"
+        >
+          <h1 className="font-display text-4xl md:text-5xl mb-2">ALL RESULTS</h1>
+          <p className="text-muted-foreground">
+            Complete competition history and performance records
+          </p>
+        </motion.div>
+
+        {/* Filters */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="flex flex-col sm:flex-row gap-4 mb-8"
+        >
+          <div className="flex items-center gap-2">
+            <span className="text-sm text-muted-foreground">Year</span>
+            <Select value={selectedYear} onValueChange={setSelectedYear}>
+              <SelectTrigger className="w-[120px] bg-card border-border">
+                <SelectValue placeholder="All" />
+              </SelectTrigger>
+              <SelectContent className="bg-card border-border">
+                <SelectItem value="all">All</SelectItem>
+                {years.map(year => (
+                  <SelectItem key={year} value={year}>{year}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          
+          <div className="flex items-center gap-2 flex-1 max-w-xs">
+            <span className="text-sm text-muted-foreground">Name</span>
+            <div className="relative flex-1">
+              <Input
+                placeholder="Search meet"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="bg-card border-border pr-8"
+              />
+              <Search className="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Results Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredCompetitions.map((competition, index) => (
+            <motion.div
+              key={competition.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.05 }}
+            >
+              <CompetitionCard competition={competition} />
+            </motion.div>
+          ))}
+        </div>
+
+        {filteredCompetitions.length === 0 && (
+          <div className="text-center py-16">
+            <p className="text-muted-foreground">No competitions found matching your criteria.</p>
+          </div>
+        )}
+
+        {/* Stats Summary */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4"
+        >
+          <div className="bg-card border border-border rounded-xl p-6 text-center">
+            <span className="font-display text-3xl text-primary">{allCompetitions.length}</span>
+            <p className="text-sm text-muted-foreground mt-1">Competitions</p>
+          </div>
+          <div className="bg-card border border-border rounded-xl p-6 text-center">
+            <span className="font-display text-3xl text-yellow-400">
+              {allCompetitions.reduce((acc, c) => acc + c.results.filter(r => r.place === "1st").length, 0)}
+            </span>
+            <p className="text-sm text-muted-foreground mt-1">Gold Medals</p>
+          </div>
+          <div className="bg-card border border-border rounded-xl p-6 text-center">
+            <span className="font-display text-3xl text-gray-300">
+              {allCompetitions.reduce((acc, c) => acc + c.results.filter(r => r.place === "2nd").length, 0)}
+            </span>
+            <p className="text-sm text-muted-foreground mt-1">Silver Medals</p>
+          </div>
+          <div className="bg-card border border-border rounded-xl p-6 text-center">
+            <span className="font-display text-3xl text-amber-600">
+              {allCompetitions.reduce((acc, c) => acc + c.results.filter(r => r.place === "3rd").length, 0)}
+            </span>
+            <p className="text-sm text-muted-foreground mt-1">Bronze Medals</p>
+          </div>
+        </motion.div>
+      </main>
+    </div>
+  );
+};
+
+export default Results;

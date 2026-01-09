@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import { Trophy, Medal, Clock, TrendingUp, Calendar, MapPin, ChevronDown } from "lucide-react";
+import { Trophy, Medal, Clock, TrendingUp, Calendar, MapPin, ChevronDown, ArrowRight } from "lucide-react";
 import { useState, useMemo } from "react";
+import { Link } from "react-router-dom";
 import {
   Select,
   SelectContent,
@@ -675,6 +676,23 @@ const ResultsSection = () => {
               </motion.div>
             ))}
           </div>
+        </motion.div>
+
+        {/* See All Results Link */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="mt-12 text-center"
+        >
+          <Link
+            to="/results"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
+          >
+            See All Results
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </motion.div>
       </div>
     </section>
