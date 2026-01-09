@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 
 const stats = [
+  { value: "4", label: "Years Competing", suffix: "" },
   { value: "40", label: "Gold Medals", suffix: "+" },
-  { value: "11", label: "Years Swimming", suffix: "" },
   { value: "27.08", label: "50m Freestyle PR", suffix: "s" },
   { value: "2025", label: "SA Schools Team", suffix: "" },
 ];
