@@ -480,37 +480,91 @@ const Results = () => {
           transition={{ delay: 0.25 }}
           className="mt-16"
         >
-          <h2 className="font-display text-2xl md:text-3xl mb-6">RECORDS</h2>
+          <div className="flex items-center gap-3 mb-8">
+            <div className="w-1 h-8 bg-gradient-to-b from-primary to-primary/30 rounded-full" />
+            <h2 className="font-display text-2xl md:text-3xl">RECORDS</h2>
+          </div>
           
-          <div className="space-y-6">
+          <div className="space-y-8">
             {recordsData.map((season, seasonIdx) => (
               <motion.div
                 key={season.season}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 + seasonIdx * 0.05 }}
-                className="bg-card border border-border rounded-lg p-5"
+                className="relative"
               >
-                <h3 className="font-semibold text-foreground mb-4">{season.season}</h3>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {/* Season Header */}
+                <div className="flex items-center gap-4 mb-5">
+                  <div className="relative">
+                    <div className="w-3 h-3 rounded-full bg-primary shadow-lg shadow-primary/50" />
+                    <div className="absolute inset-0 w-3 h-3 rounded-full bg-primary animate-ping opacity-30" />
+                  </div>
+                  <h3 className="font-display text-lg text-foreground tracking-wide">{season.season}</h3>
+                  <div className="flex-1 h-px bg-gradient-to-r from-border to-transparent" />
+                </div>
+                
+                {/* Categories Grid */}
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 pl-6">
                   {season.categories.map((category, catIdx) => (
-                    <div key={catIdx} className="bg-background/50 rounded-lg p-4 border border-border/50">
-                      <div className="flex items-center justify-between mb-3">
-                        <span className="text-primary font-medium text-sm">{category.name}</span>
-                        <span className="text-foreground font-mono text-sm">{category.score}</span>
+                    <motion.div 
+                      key={catIdx} 
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.4 + catIdx * 0.05 }}
+                      className="group relative bg-gradient-to-br from-card to-card/50 rounded-xl p-5 border border-border/50 hover:border-primary/30 transition-all duration-300 overflow-hidden"
+                    >
+                      {/* Decorative corner */}
+                      <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-primary/10 to-transparent rounded-bl-3xl" />
+                      
+                      {/* Header */}
+                      <div className="flex items-start justify-between mb-4 relative">
+                        <span className="text-primary font-semibold text-sm">{category.name}</span>
+                        <div className="flex flex-col items-end">
+                          <span className="text-2xl font-display text-foreground">{category.score}</span>
+                          <span className="text-[10px] text-muted-foreground uppercase tracking-wider">Points</span>
+                        </div>
                       </div>
-                      <div className="space-y-2">
+                      
+                      {/* Rankings */}
+                      <div className="space-y-2.5">
                         {category.rankings.map((rank, rankIdx) => (
-                          <div key={rankIdx} className="flex items-center gap-2">
-                            <div className="w-6 h-6 rounded-full bg-muted/50 flex items-center justify-center shrink-0">
-                              <div className="w-3 h-3 rounded-full bg-muted" />
+                          <div 
+                            key={rankIdx} 
+                            className="flex items-center gap-3 group/item"
+                          >
+                            {/* Medal/Shield Icon */}
+                            <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${
+                              rank.place === "1st" 
+                                ? "bg-gradient-to-br from-yellow-400/20 to-yellow-600/20 border border-yellow-500/30" 
+                                : rank.place.match(/^[2-5]/)
+                                ? "bg-gradient-to-br from-gray-400/20 to-gray-600/20 border border-gray-500/30"
+                                : "bg-muted/30 border border-border/50"
+                            }`}>
+                              <div className={`w-2.5 h-2.5 rounded-full ${
+                                rank.place === "1st" 
+                                  ? "bg-gradient-to-br from-yellow-300 to-yellow-500" 
+                                  : rank.place.match(/^[2-5]/)
+                                  ? "bg-gradient-to-br from-gray-300 to-gray-500"
+                                  : "bg-muted"
+                              }`} />
                             </div>
-                            <span className="text-muted-foreground text-sm flex-1 truncate">{rank.name}</span>
-                            <span className="text-muted-foreground text-sm">{rank.place}</span>
+                            <span className="text-muted-foreground text-sm flex-1 truncate group-hover/item:text-foreground transition-colors">
+                              {rank.name}
+                            </span>
+                            <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${
+                              rank.place === "1st" 
+                                ? "bg-yellow-500/20 text-yellow-400" 
+                                : rank.place.match(/^[2-3]/)
+                                ? "bg-muted text-muted-foreground"
+                                : "text-muted-foreground"
+                            }`}>
+                              {rank.place}
+                            </span>
                           </div>
                         ))}
                       </div>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </motion.div>
