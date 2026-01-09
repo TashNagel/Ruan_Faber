@@ -510,9 +510,27 @@ const allCompetitions = [
     location: "Potchefstroom, NW, RSA",
     year: "2024",
     results: [
-      { event: "100 L Free", time: "59.36", imp: "-0.87", place: "2nd" },
-      { event: "50 L Fly", time: "28.61", imp: "-0.42", place: "2nd" },
-      { event: "50 L Free", time: "27.28", imp: "-0.18", place: "2nd" },
+      { event: "50 Free Prelims", time: "27.28", imp: "-0.18", place: "2nd" },
+      { event: "50 Free Finals", time: "27.38", imp: "-0.08", place: "2nd" },
+      { event: "100 Free Prelims", time: "1:00.71", imp: "+0.48", place: "2nd" },
+      { event: "100 Free Finals", time: "59.36", imp: "-0.87", place: "2nd" },
+      { event: "200 Free Prelims", time: "2:16.52", imp: null, place: "3rd" },
+      { event: "200 Free Finals", time: "2:15.36", imp: null, place: "3rd" },
+      { event: "400 Free Timed Finals", time: "5:10.89", imp: null, place: "14th" },
+      { event: "50 Back Timed Finals", time: "30.87", imp: "-0.95", place: "1st" },
+      { event: "100 Back Prelims", time: "1:08.71", imp: "-2.02", place: "1st" },
+      { event: "100 Back Finals", time: "1:08.12", imp: "-2.61", place: "1st" },
+      { event: "200 Back Prelims", time: "2:35.98", imp: null, place: "1st" },
+      { event: "200 Back Finals", time: "2:32.44", imp: null, place: "1st" },
+      { event: "50 Breast Prelims", time: "35.09", imp: "-3.34", place: "2nd" },
+      { event: "50 Breast Finals", time: "35.71", imp: "-2.72", place: "2nd" },
+      { event: "100 Breast Prelims", time: "1:22.47", imp: "-4.86", place: "3rd" },
+      { event: "100 Breast Finals", time: "1:22.33", imp: "-5.00", place: "4th" },
+      { event: "50 Fly Prelims", time: "28.61", imp: "-0.42", place: "2nd" },
+      { event: "50 Fly Finals", time: "28.74", imp: "-0.29", place: "2nd" },
+      { event: "100 Fly Timed Finals", time: "1:07.34", imp: "-1.19", place: "1st" },
+      { event: "200 IM Prelims", time: "2:37.30", imp: null, place: "3rd" },
+      { event: "200 IM Finals", time: "2:31.86", imp: null, place: "2nd" },
     ]
   },
   {
@@ -523,9 +541,14 @@ const allCompetitions = [
     location: "Potchefstroom, NW, RSA",
     year: "2024",
     results: [
-      { event: "100 L Free", time: "1:00.23", imp: null, place: "2nd" },
-      { event: "50 L Fly", time: "29.03", imp: null, place: "2nd" },
-      { event: "50 L Free", time: "27.46", imp: null, place: "1st" },
+      { event: "50 Free Timed Finals", time: "27.46", imp: null, place: "1st" },
+      { event: "100 Free Timed Finals", time: "1:00.23", imp: null, place: "2nd" },
+      { event: "50 Back Timed Finals", time: "31.82", imp: null, place: "2nd" },
+      { event: "100 Back Timed Finals", time: "1:10.73", imp: null, place: "2nd" },
+      { event: "50 Breast Timed Finals", time: "38.43", imp: null, place: "3rd" },
+      { event: "100 Breast Timed Finals", time: "1:27.33", imp: null, place: "2nd" },
+      { event: "50 Fly Timed Finals", time: "29.03", imp: null, place: "2nd" },
+      { event: "100 Fly Timed Finals", time: "1:08.53", imp: null, place: "1st" },
     ]
   },
   {
@@ -535,7 +558,9 @@ const allCompetitions = [
     date: "Nov 9-10, 2024",
     location: "Potchefstroom, NW, RSA",
     year: "2024",
-    results: []
+    results: [
+      { event: "100 Fly Timed Finals", time: "DQ", imp: null, place: "-" },
+    ]
   },
   {
     id: "nw-short-course-2024",
@@ -545,9 +570,22 @@ const allCompetitions = [
     location: "Hartebeespoort, NW, RSA",
     year: "2024",
     results: [
-      { event: "50 S Fly", time: "28.57", imp: "+0.00", place: "4th" },
-      { event: "50 S Free", time: "26.55", imp: "-0.98", place: "4th" },
-      { event: "100 S Free", time: "1:00.50", imp: "-1.10", place: "5th" },
+      { event: "50 Free Prelims", time: "26.55", imp: "-0.98", place: "4th" },
+      { event: "50 Free Finals", time: "27.13", imp: "-0.40", place: "5th" },
+      { event: "100 Free Prelims", time: "1:00.60", imp: "-1.00", place: "5th" },
+      { event: "100 Free Finals", time: "1:00.50", imp: "-1.10", place: "5th" },
+      { event: "100 Back Prelims", time: "1:08.03", imp: null, place: "5th" },
+      { event: "200 Back Timed Finals", time: "2:32.64", imp: null, place: "5th" },
+      { event: "50 Breast Prelims", time: "35.51", imp: "-1.15", place: "6th" },
+      { event: "50 Breast Finals", time: "35.77", imp: "-0.89", place: "6th" },
+      { event: "100 Breast Prelims", time: "1:22.09", imp: null, place: "8th" },
+      { event: "50 Fly Prelims", time: "28.57", imp: "+0.00", place: "4th" },
+      { event: "50 Fly Finals", time: "28.81", imp: "+0.24", place: "4th" },
+      { event: "100 Fly Prelims", time: "1:05.86", imp: null, place: "3rd" },
+      { event: "100 Fly Finals", time: "1:06.82", imp: null, place: "3rd" },
+      { event: "100 IM Prelims", time: "1:08.04", imp: "-2.52", place: "3rd" },
+      { event: "100 IM Finals", time: "1:08.98", imp: "-1.58", place: "4th" },
+      { event: "200 FR-R (Anchor) Timed Finals", time: "NT", imp: null, place: "6th" },
     ]
   },
   {
@@ -558,9 +596,13 @@ const allCompetitions = [
     location: "Potchefstroom, NW, RSA",
     year: "2024",
     results: [
-      { event: "50 S Fly", time: "28.57", imp: null, place: "3rd" },
-      { event: "50 S Free", time: "27.53", imp: null, place: "6th" },
-      { event: "100 S Free", time: "1:01.60", imp: null, place: "6th" },
+      { event: "50 Free Timed Finals", time: "27.53", imp: null, place: "6th" },
+      { event: "100 Free Timed Finals", time: "1:01.60", imp: null, place: "6th" },
+      { event: "50 Back Timed Finals", time: "31.51", imp: null, place: "4th" },
+      { event: "50 Breast Timed Finals", time: "36.66", imp: null, place: "6th" },
+      { event: "50 Fly Timed Finals", time: "28.57", imp: null, place: "3rd" },
+      { event: "100 IM Timed Finals", time: "1:10.56", imp: null, place: "3rd" },
+      { event: "200 IM Timed Finals", time: "2:34.44", imp: null, place: "5th" },
     ]
   },
   {
@@ -571,9 +613,15 @@ const allCompetitions = [
     location: "Gqeberha, EC, RSA",
     year: "2024",
     results: [
-      { event: "50 L Fly", time: "29.50", imp: "+0.46", place: "12th" },
-      { event: "100 L Back", time: "1:08.89", imp: "-1.39", place: "11th" },
-      { event: "50 L Back", time: "32.05", imp: "-0.01", place: "12th" },
+      { event: "50 Back Prelims", time: "32.05", imp: "-0.01", place: "12th" },
+      { event: "50 Back Extracted", time: "32.89", imp: "+0.83", place: "-" },
+      { event: "100 Back Prelims", time: "1:08.89", imp: "-1.39", place: "11th" },
+      { event: "50 Fly Prelims", time: "29.50", imp: "+0.46", place: "12th" },
+      { event: "50 Fly Extracted", time: "31.67", imp: "+2.63", place: "-" },
+      { event: "100 Fly Prelims", time: "1:07.60", imp: "+1.60", place: "12th" },
+      { event: "400 FR-R (Split) Timed Finals", time: "1:00.71", imp: null, place: "6th" },
+      { event: "400 MED-R (Extracted) Timed Finals", time: "33.47", imp: "+1.41", place: "6th" },
+      { event: "400 MED-R (Leadoff) Timed Finals", time: "1:10.06", imp: "-0.22", place: "6th" },
     ]
   },
   {
@@ -584,9 +632,14 @@ const allCompetitions = [
     location: "Potchefstroom, NW, RSA",
     year: "2024",
     results: [
-      { event: "100 L Free", time: "1:01.12", imp: "+0.06", place: "6th" },
-      { event: "50 L Fly", time: "29.46", imp: "+0.42", place: "4th" },
-      { event: "200 L Free", time: "2:18.39", imp: null, place: "4th" },
+      { event: "100 Free Timed Finals", time: "1:01.12", imp: "+0.06", place: "6th" },
+      { event: "200 Free Timed Finals", time: "2:18.39", imp: null, place: "4th" },
+      { event: "50 Back Timed Finals", time: "32.06", imp: "-2.93", place: "5th" },
+      { event: "100 Back Timed Finals", time: "1:11.09", imp: "+0.81", place: "5th" },
+      { event: "200 Back Timed Finals", time: "2:44.19", imp: "+4.13", place: "3rd" },
+      { event: "50 Fly Timed Finals", time: "29.46", imp: "+0.42", place: "4th" },
+      { event: "100 Fly Timed Finals", time: "1:08.87", imp: "+2.87", place: "3rd" },
+      { event: "200 IM Timed Finals", time: "2:37.64", imp: "+0.01", place: "5th" },
     ]
   },
   {
@@ -597,8 +650,9 @@ const allCompetitions = [
     location: "Pretoria, GP, RSA",
     year: "2024",
     results: [
-      { event: "100 L Free", time: "1:01.64", imp: "+0.58", place: "4th" },
-      { event: "50 L Back", time: "37.86", imp: "+2.87", place: "2nd" },
+      { event: "100 Free Timed Finals", time: "1:01.64", imp: "+0.58", place: "4th" },
+      { event: "50 Back Timed Finals", time: "37.86", imp: "+2.87", place: "2nd" },
+      { event: "200 Fly Timed Finals", time: "DQ", imp: null, place: "-" },
     ]
   },
   {
@@ -609,7 +663,8 @@ const allCompetitions = [
     location: "Bloemfontein, FS, RSA",
     year: "2024",
     results: [
-      { event: "100 L Fly", time: "1:08.13", imp: "+2.13", place: "4th" },
+      { event: "50 Fly Extracted", time: "30.07", imp: "+1.03", place: "-" },
+      { event: "100 Fly Timed Finals", time: "1:08.13", imp: "+2.13", place: "4th" },
     ]
   },
   {
