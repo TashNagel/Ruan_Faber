@@ -491,19 +491,36 @@ const ResultsSection = () => {
     };
   }, []);
   
-  // Calculate rankings based on results
+  // Calculate detailed rankings from ALL results
   const rankings = useMemo(() => {
-    const results = currentChampionship.results;
-    const avgPlace = results.reduce((sum, r) => {
-      const place = parseInt(r.place) || 8;
-      return sum + place;
-    }, 0) / results.length;
+    let totalEvents = 0;
+    let finalsAppearances = 0;
+    let topThreeFinishes = 0;
+    let bestEvents: { event: string; place: string; time: string }[] = [];
+    
+    championships.forEach(champ => {
+      champ.results.forEach(r => {
+        totalEvents++;
+        if (r.round === "Finals") finalsAppearances++;
+        const placeNum = parseInt(r.place) || 99;
+        if (placeNum <= 3) topThreeFinishes++;
+        if (placeNum === 1) {
+          bestEvents.push({ event: r.event, place: r.place, time: r.time });
+        }
+      });
+    });
+    
+    // Get unique gold events
+    const uniqueGolds = [...new Set(bestEvents.map(e => e.event))].slice(0, 3);
     
     return {
-      position: avgPlace <= 2 ? 1 : avgPlace <= 3 ? 2 : avgPlace <= 4 ? 3 : 4,
-      team: teams[0].name
+      totalEvents,
+      finalsAppearances,
+      topThreeFinishes,
+      winRate: totalEvents > 0 ? Math.round((topThreeFinishes / totalEvents) * 100) : 0,
+      bestEvents: uniqueGolds
     };
-  }, [currentChampionship]);
+  }, []);
   
   // Calculate stats from ALL championships
   const stats = useMemo(() => {
@@ -548,19 +565,48 @@ const ResultsSection = () => {
               transition={{ duration: 0.6 }}
               className="bg-card-gradient border border-border rounded-xl p-6"
             >
-              <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center justify-between mb-5">
                 <h3 className="font-display text-xl">Rankings</h3>
                 <Trophy className="w-5 h-5 text-primary" />
               </div>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-primary/20 border border-primary/50 flex items-center justify-center">
-                  <span className="font-display text-xl text-primary">{rankings.position}</span>
+              
+              {/* Stats Grid */}
+              <div className="grid grid-cols-2 gap-3 mb-5">
+                <div className="bg-secondary/50 rounded-lg p-3 text-center">
+                  <span className="font-display text-2xl text-primary">{rankings.totalEvents}</span>
+                  <p className="text-xs text-muted-foreground mt-1">Total Swims</p>
                 </div>
-                <div>
-                  <p className="font-medium text-foreground">{rankings.team}</p>
-                  <p className="text-sm text-muted-foreground">{currentChampionship.name}</p>
+                <div className="bg-secondary/50 rounded-lg p-3 text-center">
+                  <span className="font-display text-2xl text-primary">{rankings.finalsAppearances}</span>
+                  <p className="text-xs text-muted-foreground mt-1">Finals</p>
+                </div>
+                <div className="bg-secondary/50 rounded-lg p-3 text-center">
+                  <span className="font-display text-2xl text-primary">{rankings.topThreeFinishes}</span>
+                  <p className="text-xs text-muted-foreground mt-1">Top 3 Finishes</p>
+                </div>
+                <div className="bg-secondary/50 rounded-lg p-3 text-center">
+                  <span className="font-display text-2xl text-primary">{rankings.winRate}%</span>
+                  <p className="text-xs text-muted-foreground mt-1">Podium Rate</p>
                 </div>
               </div>
+              
+              {/* Best Events */}
+              {rankings.bestEvents.length > 0 && (
+                <div className="border-t border-border pt-4">
+                  <p className="text-xs text-muted-foreground uppercase tracking-wider mb-3">Top Events</p>
+                  <div className="flex flex-wrap gap-2">
+                    {rankings.bestEvents.map((event, i) => (
+                      <span 
+                        key={i}
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-primary/10 border border-primary/30 rounded-full text-xs font-medium text-primary"
+                      >
+                        <Trophy className="w-3 h-3" />
+                        {event}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
             </motion.div>
 
             {/* Specialty Chart */}
