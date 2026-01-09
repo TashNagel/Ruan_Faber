@@ -505,16 +505,19 @@ const ResultsSection = () => {
     };
   }, [currentChampionship]);
   
-  // Calculate stats
+  // Calculate stats from ALL championships
   const stats = useMemo(() => {
-    const results = currentChampionship.results;
-    return {
-      first: results.filter(r => r.place === "1st").length,
-      second: results.filter(r => r.place === "2nd").length,
-      third: results.filter(r => r.place === "3rd").length,
-      pbs: results.filter(r => r.pb).length
-    };
-  }, [currentChampionship]);
+    let first = 0, second = 0, third = 0, pbs = 0;
+    championships.forEach(champ => {
+      champ.results.forEach(r => {
+        if (r.place === "1st") first++;
+        if (r.place === "2nd") second++;
+        if (r.place === "3rd") third++;
+        if (r.pb) pbs++;
+      });
+    });
+    return { first, second, third, pbs };
+  }, []);
 
   return (
     <section id="results" className="py-24 bg-background">
