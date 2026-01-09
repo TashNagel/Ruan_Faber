@@ -10,7 +10,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-// Championship data - all other data derives from this
+// Championship data - synced with all results data
 const championships = [
   {
     id: "nws-2025",
@@ -19,90 +19,143 @@ const championships = [
     location: "Potchefstroom, NW",
     flag: "za",
     results: [
-      { event: "50 L Free", round: "Finals", time: "26.26", pb: false, place: "2nd" },
-      { event: "50 L Free", round: "Prelims", time: "26.40", pb: false, place: "2nd" },
-      { event: "100 L Free", round: "Finals", time: "59.26", pb: false, place: "4th" },
-      { event: "100 L Free", round: "Prelims", time: "58.55", pb: true, place: "3rd" },
-      { event: "200 L Free", round: "Finals", time: "2:18.57", pb: false, place: "7th" },
-      { event: "200 L Free", round: "Prelims", time: "2:14.39", pb: false, place: "5th" },
-      { event: "400 L Free", round: "Timed Finals", time: "4:58.01", pb: true, place: "6th" },
-      { event: "50 L Back", round: "Finals", time: "30.85", pb: false, place: "2nd" },
-      { event: "50 L Back", round: "Prelims", time: "30.08", pb: true, place: "1st" },
-      { event: "100 L Back", round: "Finals", time: "1:08.00", pb: false, place: "3rd" },
-      { event: "100 L Back", round: "Prelims", time: "1:07.60", pb: false, place: "3rd" },
-      { event: "200 L Back", round: "Finals", time: "2:36.36", pb: false, place: "3rd" },
-      { event: "200 L Back", round: "Prelims", time: "2:35.79", pb: false, place: "2nd" },
-      { event: "50 L Breast", round: "Finals", time: "35.87", pb: false, place: "5th" },
-      { event: "50 L Breast", round: "Prelims", time: "34.17", pb: true, place: "3rd" },
-      { event: "100 L Breast", round: "Timed Finals", time: "1:22.28", pb: false, place: "7th" },
-      { event: "200 L Breast", round: "Prelims", time: "3:09.24", pb: true, place: "3rd" },
-      { event: "50 L Fly", round: "Timed Finals", time: "27.84", pb: false, place: "2nd" },
-      { event: "100 L Fly", round: "Finals", time: "1:05.56", pb: false, place: "3rd" },
-      { event: "100 L Fly", round: "Prelims", time: "1:04.86", pb: false, place: "3rd" },
-      { event: "200 L IM", round: "Timed Finals", time: "2:34.40", pb: false, place: "4th" },
-      { event: "400 L IM", round: "Timed Finals", time: "5:36.16", pb: false, place: "1st" },
+      { event: "50 Free", round: "Prelims", time: "26.40", pb: false, place: "2nd" },
+      { event: "50 Free", round: "Finals", time: "26.26", pb: false, place: "2nd" },
+      { event: "100 Free", round: "Prelims", time: "58.55", pb: true, place: "3rd" },
+      { event: "100 Free", round: "Finals", time: "59.26", pb: false, place: "4th" },
+      { event: "200 Free", round: "Prelims", time: "2:14.39", pb: false, place: "5th" },
+      { event: "200 Free", round: "Finals", time: "2:18.57", pb: false, place: "7th" },
+      { event: "400 Free", round: "Timed Finals", time: "4:58.01", pb: true, place: "6th" },
+      { event: "50 Back", round: "Prelims", time: "30.08", pb: true, place: "1st" },
+      { event: "50 Back", round: "Finals", time: "30.85", pb: false, place: "2nd" },
+      { event: "100 Back", round: "Prelims", time: "1:07.60", pb: false, place: "3rd" },
+      { event: "100 Back", round: "Finals", time: "1:08.00", pb: false, place: "3rd" },
+      { event: "200 Back", round: "Prelims", time: "2:35.79", pb: false, place: "3rd" },
+      { event: "200 Back", round: "Finals", time: "2:36.36", pb: false, place: "3rd" },
+      { event: "50 Breast", round: "Prelims", time: "34.17", pb: true, place: "3rd" },
+      { event: "50 Breast", round: "Finals", time: "35.87", pb: false, place: "5th" },
+      { event: "100 Breast", round: "Timed Finals", time: "1:22.28", pb: false, place: "7th" },
+      { event: "200 Breast", round: "Prelims", time: "3:09.24", pb: true, place: "3rd" },
+      { event: "50 Fly", round: "Timed Finals", time: "27.84", pb: false, place: "2nd" },
+      { event: "100 Fly", round: "Prelims", time: "1:04.86", pb: false, place: "3rd" },
+      { event: "100 Fly", round: "Finals", time: "1:05.56", pb: false, place: "3rd" },
+      { event: "200 IM", round: "Timed Finals", time: "2:34.40", pb: false, place: "4th" },
+      { event: "400 IM", round: "Timed Finals", time: "5:36.16", pb: false, place: "1st" },
+    ]
+  },
+  {
+    id: "nw-short-course-2025",
+    name: "NW Short Course Championships",
+    date: "Oct 4-6, 2025",
+    location: "Phokeng, NW",
+    flag: "za",
+    results: [
+      { event: "50 Free", round: "Prelims", time: "25.85", pb: true, place: "2nd" },
+      { event: "50 Free", round: "Finals", time: "26.01", pb: true, place: "2nd" },
+      { event: "100 Free", round: "Prelims", time: "57.82", pb: true, place: "3rd" },
+      { event: "100 Free", round: "Finals", time: "58.19", pb: true, place: "3rd" },
+      { event: "200 Free", round: "Timed Finals", time: "2:13.53", pb: false, place: "3rd" },
+      { event: "50 Back", round: "Prelims", time: "29.89", pb: true, place: "2nd" },
+      { event: "50 Back", round: "Finals", time: "30.44", pb: true, place: "3rd" },
+      { event: "100 Back", round: "Prelims", time: "1:05.10", pb: true, place: "2nd" },
+      { event: "100 Back", round: "Finals", time: "1:06.93", pb: true, place: "3rd" },
+      { event: "200 Back", round: "Timed Finals", time: "2:33.14", pb: false, place: "3rd" },
+      { event: "50 Breast", round: "Prelims", time: "33.13", pb: true, place: "1st" },
+      { event: "50 Breast", round: "Finals", time: "33.29", pb: true, place: "1st" },
+      { event: "100 Breast", round: "Prelims", time: "1:14.71", pb: true, place: "2nd" },
+      { event: "100 Breast", round: "Finals", time: "1:16.57", pb: true, place: "3rd" },
+      { event: "50 Fly", round: "Prelims", time: "27.75", pb: true, place: "1st" },
+      { event: "50 Fly", round: "Finals", time: "27.52", pb: true, place: "1st" },
+      { event: "100 Fly", round: "Prelims", time: "1:01.45", pb: true, place: "1st" },
+      { event: "100 Fly", round: "Finals", time: "1:03.04", pb: true, place: "3rd" },
+      { event: "100 IM", round: "Prelims", time: "1:06.45", pb: true, place: "1st" },
+      { event: "100 IM", round: "Finals", time: "1:04.44", pb: true, place: "3rd" },
+      { event: "200 IM", round: "Timed Finals", time: "2:29.48", pb: true, place: "3rd" },
     ]
   },
   {
     id: "sa-schools-2025",
-    name: "SA Schools Championships",
-    date: "Oct 15-18, 2025",
-    location: "Durban, KZN",
+    name: "SA Schools Championship",
+    date: "Apr 5-7, 2025",
+    location: "Bloemfontein, FS",
     flag: "za",
     results: [
-      { event: "50 L Free", round: "Finals", time: "26.50", pb: false, place: "3rd" },
-      { event: "100 L Free", round: "Finals", time: "58.90", pb: false, place: "2nd" },
-      { event: "50 L Back", round: "Finals", time: "30.45", pb: false, place: "1st" },
-      { event: "100 L Back", round: "Finals", time: "1:07.20", pb: true, place: "2nd" },
-      { event: "200 L IM", round: "Finals", time: "2:32.80", pb: true, place: "3rd" },
+      { event: "50 Back", round: "Prelims", time: "30.60", pb: false, place: "9th" },
+      { event: "50 Back", round: "Finals", time: "30.58", pb: false, place: "8th" },
+      { event: "100 Back", round: "Prelims", time: "1:06.59", pb: false, place: "5th" },
+      { event: "100 Back", round: "Finals", time: "1:08.36", pb: false, place: "9th" },
+      { event: "50 Fly", round: "Prelims", time: "27.73", pb: true, place: "3rd" },
+      { event: "50 Fly", round: "Finals", time: "27.58", pb: true, place: "4th" },
+      { event: "100 Fly", round: "Prelims", time: "1:05.50", pb: true, place: "6th" },
+      { event: "100 Fly", round: "Finals", time: "1:04.69", pb: true, place: "5th" },
     ]
   },
   {
-    id: "sa-regional-aquatic-2022",
-    name: "SA Regional Aquatic Champs 2022",
-    date: "Mar 29-Apr 2, 2022",
-    location: "Pretoria, AG",
+    id: "sa-level-3-regional-2025",
+    name: "SA Level 3 Regional Age Group",
+    date: "Mar 20-23, 2025",
+    location: "NTS, GP",
     flag: "za",
     results: [
-      { event: "50 Free", round: "Prelims", time: "DQ", pb: false, place: "-" },
-      { event: "100 Free", round: "Prelims", time: "1:07.13", pb: false, place: "13th" },
-      { event: "200 Free", round: "Prelims", time: "2:27.03", pb: true, place: "75th" },
-      { event: "400 Free", round: "Timed Finals", time: "5:20.48", pb: false, place: "8th" },
-      { event: "50 Back", round: "Prelims", time: "35.02", pb: true, place: "6th" },
-      { event: "50 Back", round: "Finals", time: "34.94", pb: true, place: "8th" },
-      { event: "100 Back", round: "Prelims", time: "1:17.95", pb: true, place: "16th" },
-      { event: "200 Back", round: "Prelims", time: "2:47.62", pb: true, place: "12th" },
-      { event: "50 Fly", round: "Prelims", time: "31.11", pb: false, place: "2nd" },
-      { event: "50 Fly", round: "Finals", time: "31.04", pb: false, place: "4th" },
-      { event: "100 Fly", round: "Prelims", time: "1:12.69", pb: true, place: "4th" },
-      { event: "100 Fly", round: "Finals", time: "1:12.24", pb: true, place: "4th" },
-      { event: "200 IM", round: "Prelims", time: "2:48.42", pb: false, place: "8th" },
-      { event: "200 IM", round: "Finals", time: "2:46.43", pb: true, place: "6th" },
+      { event: "50 Free", round: "Prelims", time: "26.23", pb: true, place: "2nd" },
+      { event: "50 Free", round: "Finals", time: "26.09", pb: true, place: "3rd" },
+      { event: "100 Free", round: "Prelims", time: "58.97", pb: true, place: "8th" },
+      { event: "100 Free", round: "Finals", time: "59.16", pb: true, place: "8th" },
+      { event: "200 Free", round: "Prelims", time: "2:16.09", pb: false, place: "9th" },
+      { event: "200 Free", round: "Finals", time: "2:14.36", pb: true, place: "7th" },
+      { event: "50 Back", round: "Prelims", time: "30.34", pb: true, place: "2nd" },
+      { event: "50 Back", round: "Finals", time: "30.86", pb: true, place: "2nd" },
+      { event: "100 Back", round: "Prelims", time: "1:06.87", pb: true, place: "2nd" },
+      { event: "100 Back", round: "Finals", time: "1:06.54", pb: true, place: "1st" },
+      { event: "200 Back", round: "Prelims", time: "2:37.51", pb: false, place: "8th" },
+      { event: "50 Breast", round: "Prelims", time: "34.79", pb: true, place: "9th" },
+      { event: "50 Breast", round: "Finals", time: "34.61", pb: true, place: "9th" },
+      { event: "50 Fly", round: "Prelims", time: "28.19", pb: true, place: "4th" },
+      { event: "50 Fly", round: "Finals", time: "28.40", pb: true, place: "4th" },
+      { event: "100 Fly", round: "Prelims", time: "1:05.73", pb: false, place: "5th" },
+      { event: "100 Fly", round: "Finals", time: "1:06.31", pb: false, place: "4th" },
     ]
   },
   {
-    id: "sa-schools-2022",
-    name: "SA Schools Swimming Championships",
-    date: "Mar 26-28, 2022",
-    location: "Tshwane",
+    id: "cga-summer-gala-2025",
+    name: "CGA Summer Gala #4 Level",
+    date: "Jan 25, 2025",
+    location: "RSA",
     flag: "za",
     results: [
-      { event: "200 L IM", round: "Finals", time: "2:46.55", pb: false, place: "5th" },
-      { event: "100 L Fly", round: "Finals", time: "1:13.53", pb: false, place: "6th" },
-      { event: "200 L Free", round: "Prelims", time: "2:31.97", pb: false, place: "10th" },
-      { event: "100 Back", round: "Prelims", time: "1:18.20", pb: false, place: "6th" },
-      { event: "100 Back", round: "Finals", time: "1:18.37", pb: false, place: "6th" },
-      { event: "200 Back", round: "Prelims", time: "2:53.67", pb: false, place: "6th" },
-      { event: "200 Back", round: "Finals", time: "2:50.94", pb: false, place: "7th" },
-      { event: "100 Fly", round: "Prelims", time: "1:13.82", pb: false, place: "5th" },
-      { event: "100 Fly", round: "Finals", time: "1:13.53", pb: false, place: "6th" },
-      { event: "200 IM", round: "Prelims", time: "2:47.30", pb: false, place: "4th" },
-      { event: "200 IM", round: "Finals", time: "2:46.55", pb: false, place: "5th" },
-      { event: "200 FR-R (Split)", round: "Timed Finals", time: "NT", pb: false, place: "5th" },
-      { event: "400 FR-R (Split)", round: "Timed Finals", time: "1:07.16", pb: false, place: "3rd" },
-      { event: "200 MED-R (Leadoff)", round: "Timed Finals", time: "NT", pb: false, place: "3rd" },
-      { event: "400 MED-R (Extracted)", round: "Timed Finals", time: "1:19.96", pb: false, place: "3rd" },
-      { event: "400 MED-R (Leadoff)", round: "Timed Finals", time: "1:19.96", pb: false, place: "3rd" },
+      { event: "200 Free", round: "Timed Finals", time: "2:16.66", pb: false, place: "2nd" },
+      { event: "100 Breast", round: "Timed Finals", time: "1:19.91", pb: true, place: "5th" },
+      { event: "50 Fly", round: "Timed Finals", time: "28.75", pb: false, place: "1st" },
+      { event: "100 Fly", round: "Timed Finals", time: "1:05.51", pb: true, place: "1st" },
+    ]
+  },
+  {
+    id: "nws-championships-2024",
+    name: "NWS Championships 2024",
+    date: "Dec 7-10, 2024",
+    location: "Potchefstroom, NW",
+    flag: "za",
+    results: [
+      { event: "50 Free", round: "Prelims", time: "27.28", pb: true, place: "2nd" },
+      { event: "50 Free", round: "Finals", time: "27.38", pb: true, place: "2nd" },
+      { event: "100 Free", round: "Prelims", time: "1:00.71", pb: false, place: "2nd" },
+      { event: "100 Free", round: "Finals", time: "59.36", pb: true, place: "2nd" },
+      { event: "200 Free", round: "Prelims", time: "2:16.52", pb: false, place: "3rd" },
+      { event: "200 Free", round: "Finals", time: "2:15.36", pb: false, place: "3rd" },
+      { event: "50 Back", round: "Timed Finals", time: "30.87", pb: true, place: "1st" },
+      { event: "100 Back", round: "Prelims", time: "1:08.71", pb: true, place: "1st" },
+      { event: "100 Back", round: "Finals", time: "1:08.12", pb: true, place: "1st" },
+      { event: "200 Back", round: "Prelims", time: "2:35.98", pb: false, place: "1st" },
+      { event: "200 Back", round: "Finals", time: "2:32.44", pb: false, place: "1st" },
+      { event: "50 Breast", round: "Prelims", time: "35.09", pb: true, place: "2nd" },
+      { event: "50 Breast", round: "Finals", time: "35.71", pb: true, place: "2nd" },
+      { event: "100 Breast", round: "Prelims", time: "1:22.47", pb: true, place: "3rd" },
+      { event: "100 Breast", round: "Finals", time: "1:22.33", pb: true, place: "4th" },
+      { event: "50 Fly", round: "Prelims", time: "28.61", pb: true, place: "2nd" },
+      { event: "50 Fly", round: "Finals", time: "28.74", pb: true, place: "2nd" },
+      { event: "100 Fly", round: "Timed Finals", time: "1:07.34", pb: true, place: "1st" },
+      { event: "200 IM", round: "Prelims", time: "2:37.30", pb: false, place: "3rd" },
+      { event: "200 IM", round: "Finals", time: "2:31.86", pb: false, place: "2nd" },
     ]
   },
 ];
@@ -568,34 +621,25 @@ const ResultsSection = () => {
                 <div className="flex items-center gap-3">
                   <FlagIcon country={currentChampionship.flag} />
                   <div>
-                    <Select value={selectedChampionship} onValueChange={setSelectedChampionship}>
-                      <SelectTrigger className="border-0 p-0 h-auto font-display text-xl bg-transparent focus:ring-0">
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent className="bg-card border-border">
-                        {championships.map(champ => (
-                          <SelectItem key={champ.id} value={champ.id}>
-                            {champ.name}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                    <p className="text-sm text-muted-foreground">{currentChampionship.date}</p>
+                    <h3 className="font-display text-xl">{currentChampionship.name}</h3>
+                    <p className="text-sm text-muted-foreground">{currentChampionship.date} • {currentChampionship.location}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Select value={selectedEvent} onValueChange={setSelectedEvent}>
-                    <SelectTrigger className="w-[160px] bg-secondary border-border">
-                      <SelectValue placeholder="All Events" />
+                  <span className="text-sm text-muted-foreground">Meet</span>
+                  <Select value={selectedChampionship} onValueChange={(val) => {
+                    setSelectedChampionship(val);
+                    setSelectedEvent("all");
+                  }}>
+                    <SelectTrigger className="w-[220px] bg-secondary border-border">
+                      <SelectValue placeholder="Select Meet" />
                     </SelectTrigger>
                     <SelectContent className="bg-card border-border">
-                      <SelectItem value="all">All Events</SelectItem>
-                      {uniqueEvents.map(event => (
-                        <SelectItem key={event} value={event}>{event}</SelectItem>
+                      {championships.map(champ => (
+                        <SelectItem key={champ.id} value={champ.id}>{champ.name}</SelectItem>
                       ))}
                     </SelectContent>
                   </Select>
-                  <Medal className="w-5 h-5 text-primary" />
                 </div>
               </div>
             </div>
