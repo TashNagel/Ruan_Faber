@@ -116,6 +116,70 @@ const recordsData = [
   }
 ];
 
+// Personal Records by Club/Age Group with FINA Points
+const personalRecords = [
+  {
+    club: "North West University Swim Club",
+    pointSystem: "FINA",
+    ageGroup: "13 - 14",
+    score: "309.85",
+    events: [
+      { event: "200 L IM", meet: "SA Schools Swimming Championships", baseTime: "1:54.00", time: "2:46.55", points: 321 },
+      { event: "100 L Fly", meet: "SA Schools Swimming Championships", baseTime: "49.45", time: "1:13.53", points: 304 },
+      { event: "200 L Free", meet: "SA Schools Swimming Championships", baseTime: "1:42.00", time: "2:31.97", points: 302 },
+      { event: "100 L Back", meet: "SA Schools Swimming Championships", baseTime: "51.85", time: "1:18.20", points: 291 },
+    ]
+  },
+  {
+    club: "Swim Star Aquatics Rtb",
+    pointSystem: "FINA",
+    ageGroup: "Open",
+    score: "350.30",
+    events: [
+      { event: "50 L Fly", meet: "SA Regional Aquatic Champs 2022", baseTime: "22.27", time: "31.04", points: 369 },
+      { event: "100 L Free", meet: "SA Regional Aquatic Champs 2022", baseTime: "46.91", time: "1:07.13", points: 341 },
+      { event: "200 L Free", meet: "SA Regional Aquatic Champs 2022", baseTime: "1:42.00", time: "2:27.03", points: 334 },
+      { event: "400 L Free", meet: "SA Regional Aquatic Champs 2022", baseTime: "3:40.07", time: "5:20.48", points: 324 },
+    ]
+  },
+  {
+    club: "North West University Swim Club",
+    pointSystem: "FINA",
+    ageGroup: "Open",
+    score: "309.85",
+    events: [
+      { event: "200 L IM", meet: "SA Schools Swimming Championships", baseTime: "1:54.00", time: "2:46.55", points: 321 },
+      { event: "100 L Fly", meet: "SA Schools Swimming Championships", baseTime: "49.45", time: "1:13.53", points: 304 },
+      { event: "200 L Free", meet: "SA Schools Swimming Championships", baseTime: "1:42.00", time: "2:31.97", points: 302 },
+      { event: "100 L Back", meet: "SA Schools Swimming Championships", baseTime: "51.85", time: "1:18.20", points: 291 },
+    ]
+  },
+  {
+    club: "RSA",
+    pointSystem: "FINA",
+    ageGroup: "Open",
+    score: "350.30",
+    events: [
+      { event: "50 L Fly", meet: "SA Regional Aquatic Champs 2022", baseTime: "22.27", time: "31.04", points: 369 },
+      { event: "100 L Free", meet: "SA Regional Aquatic Champs 2022", baseTime: "46.91", time: "1:07.13", points: 341 },
+      { event: "200 L Free", meet: "SA Regional Aquatic Champs 2022", baseTime: "1:42.00", time: "2:27.03", points: 334 },
+      { event: "400 L Free", meet: "SA Regional Aquatic Champs 2022", baseTime: "3:40.07", time: "5:20.48", points: 324 },
+    ]
+  },
+  {
+    club: "Swim Star Aquatics Rtb",
+    pointSystem: "FINA",
+    ageGroup: "13 - 14",
+    score: "350.30",
+    events: [
+      { event: "50 L Fly", meet: "SA Regional Aquatic Champs 2022", baseTime: "22.27", time: "31.04", points: 369 },
+      { event: "100 L Free", meet: "SA Regional Aquatic Champs 2022", baseTime: "46.91", time: "1:07.13", points: 341 },
+      { event: "200 L Free", meet: "SA Regional Aquatic Champs 2022", baseTime: "1:42.00", time: "2:27.03", points: 334 },
+      { event: "400 L Free", meet: "SA Regional Aquatic Champs 2022", baseTime: "3:40.07", time: "5:20.48", points: 324 },
+    ]
+  }
+];
+
 // All competitions data
 const allCompetitions = [
   {
@@ -674,6 +738,82 @@ const Results = () => {
                       </div>
                     </motion.div>
                   ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Personal Records Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.35 }}
+          className="mt-16"
+        >
+          <div className="flex items-center gap-3 mb-8">
+            <div className="w-1 h-8 bg-gradient-to-b from-primary to-primary/30 rounded-full" />
+            <h2 className="font-display text-2xl md:text-3xl">PERSONAL RECORDS</h2>
+          </div>
+
+          <div className="space-y-6">
+            {personalRecords.map((record, recordIdx) => (
+              <motion.div
+                key={`${record.club}-${record.ageGroup}-${recordIdx}`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 + recordIdx * 0.05 }}
+                className="bg-card border border-border rounded-xl overflow-hidden"
+              >
+                {/* Header */}
+                <div className="p-5 border-b border-border/50 bg-gradient-to-r from-card to-background">
+                  <div className="flex flex-wrap items-center justify-between gap-4">
+                    <div>
+                      <h3 className="font-semibold text-foreground text-lg">{record.club}</h3>
+                      <div className="flex items-center gap-3 mt-1">
+                        <span className="text-xs px-2 py-0.5 rounded bg-muted text-muted-foreground uppercase tracking-wider">
+                          {record.pointSystem}
+                        </span>
+                        <span className="text-primary text-sm font-medium">{record.ageGroup}</span>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <span className="text-xs text-muted-foreground uppercase tracking-wider block">Score</span>
+                      <span className="font-display text-3xl text-primary">{record.score}</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Events Table */}
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b border-border/50 bg-muted/30">
+                        <th className="text-left py-3 px-4 text-xs font-medium text-muted-foreground">Event</th>
+                        <th className="text-left py-3 px-4 text-xs font-medium text-muted-foreground">Meet</th>
+                        <th className="text-right py-3 px-4 text-xs font-medium text-muted-foreground">Base Time</th>
+                        <th className="text-right py-3 px-4 text-xs font-medium text-muted-foreground">Time</th>
+                        <th className="text-right py-3 px-4 text-xs font-medium text-muted-foreground">Points</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {record.events.map((event, eventIdx) => (
+                        <tr key={eventIdx} className="border-b border-border/30 last:border-0 hover:bg-muted/20 transition-colors">
+                          <td className="py-3 px-4 text-foreground font-medium">{event.event}</td>
+                          <td className="py-3 px-4 text-muted-foreground">{event.meet}</td>
+                          <td className="text-right py-3 px-4 text-muted-foreground font-mono">{event.baseTime}</td>
+                          <td className="text-right py-3 px-4">
+                            <span className="text-primary font-mono font-medium">{event.time}</span>
+                          </td>
+                          <td className="text-right py-3 px-4">
+                            <span className="inline-flex items-center justify-center min-w-[3rem] px-2 py-1 rounded-full bg-primary/10 text-primary font-semibold text-xs">
+                              {event.points}
+                            </span>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
               </motion.div>
             ))}
