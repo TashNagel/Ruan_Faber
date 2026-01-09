@@ -10,179 +10,52 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import saFlag from "@/assets/sa-flag.png";
+import { 
+  allCompetitions, 
+  finaProgressionData, 
+  teams, 
+  upcomingEvents, 
+  calculateCareerStats 
+} from "@/data/competitionData";
 
-// Championship data - synced with all results data
-const championships = [
-  {
-    id: "nws-2025",
-    name: "NWS Championships",
-    date: "Dec 6-9, 2025",
-    location: "Potchefstroom, NW",
-    flag: "za",
-    results: [
-      { event: "50 Free", round: "Prelims", time: "26.40", pb: false, place: "2nd" },
-      { event: "50 Free", round: "Finals", time: "26.26", pb: false, place: "2nd" },
-      { event: "100 Free", round: "Prelims", time: "58.55", pb: true, place: "3rd" },
-      { event: "100 Free", round: "Finals", time: "59.26", pb: false, place: "4th" },
-      { event: "200 Free", round: "Prelims", time: "2:14.39", pb: false, place: "5th" },
-      { event: "200 Free", round: "Finals", time: "2:18.57", pb: false, place: "7th" },
-      { event: "400 Free", round: "Timed Finals", time: "4:58.01", pb: true, place: "6th" },
-      { event: "50 Back", round: "Prelims", time: "30.08", pb: true, place: "1st" },
-      { event: "50 Back", round: "Finals", time: "30.85", pb: false, place: "2nd" },
-      { event: "100 Back", round: "Prelims", time: "1:07.60", pb: false, place: "3rd" },
-      { event: "100 Back", round: "Finals", time: "1:08.00", pb: false, place: "3rd" },
-      { event: "200 Back", round: "Prelims", time: "2:35.79", pb: false, place: "3rd" },
-      { event: "200 Back", round: "Finals", time: "2:36.36", pb: false, place: "3rd" },
-      { event: "50 Breast", round: "Prelims", time: "34.17", pb: true, place: "3rd" },
-      { event: "50 Breast", round: "Finals", time: "35.87", pb: false, place: "5th" },
-      { event: "100 Breast", round: "Timed Finals", time: "1:22.28", pb: false, place: "7th" },
-      { event: "200 Breast", round: "Prelims", time: "3:09.24", pb: true, place: "3rd" },
-      { event: "50 Fly", round: "Timed Finals", time: "27.84", pb: false, place: "2nd" },
-      { event: "100 Fly", round: "Prelims", time: "1:04.86", pb: false, place: "3rd" },
-      { event: "100 Fly", round: "Finals", time: "1:05.56", pb: false, place: "3rd" },
-      { event: "200 IM", round: "Timed Finals", time: "2:34.40", pb: false, place: "4th" },
-      { event: "400 IM", round: "Timed Finals", time: "5:36.16", pb: false, place: "1st" },
-    ]
-  },
-  {
-    id: "nw-short-course-2025",
-    name: "NW Short Course Championships",
-    date: "Oct 4-6, 2025",
-    location: "Phokeng, NW",
-    flag: "za",
-    results: [
-      { event: "50 Free", round: "Prelims", time: "25.85", pb: true, place: "2nd" },
-      { event: "50 Free", round: "Finals", time: "26.01", pb: true, place: "2nd" },
-      { event: "100 Free", round: "Prelims", time: "57.82", pb: true, place: "3rd" },
-      { event: "100 Free", round: "Finals", time: "58.19", pb: true, place: "3rd" },
-      { event: "200 Free", round: "Timed Finals", time: "2:13.53", pb: false, place: "3rd" },
-      { event: "50 Back", round: "Prelims", time: "29.89", pb: true, place: "2nd" },
-      { event: "50 Back", round: "Finals", time: "30.44", pb: true, place: "3rd" },
-      { event: "100 Back", round: "Prelims", time: "1:05.10", pb: true, place: "2nd" },
-      { event: "100 Back", round: "Finals", time: "1:06.93", pb: true, place: "3rd" },
-      { event: "200 Back", round: "Timed Finals", time: "2:33.14", pb: false, place: "3rd" },
-      { event: "50 Breast", round: "Prelims", time: "33.13", pb: true, place: "1st" },
-      { event: "50 Breast", round: "Finals", time: "33.29", pb: true, place: "1st" },
-      { event: "100 Breast", round: "Prelims", time: "1:14.71", pb: true, place: "2nd" },
-      { event: "100 Breast", round: "Finals", time: "1:16.57", pb: true, place: "3rd" },
-      { event: "50 Fly", round: "Prelims", time: "27.75", pb: true, place: "1st" },
-      { event: "50 Fly", round: "Finals", time: "27.52", pb: true, place: "1st" },
-      { event: "100 Fly", round: "Prelims", time: "1:01.45", pb: true, place: "1st" },
-      { event: "100 Fly", round: "Finals", time: "1:03.04", pb: true, place: "3rd" },
-      { event: "100 IM", round: "Prelims", time: "1:06.45", pb: true, place: "1st" },
-      { event: "100 IM", round: "Finals", time: "1:04.44", pb: true, place: "3rd" },
-      { event: "200 IM", round: "Timed Finals", time: "2:29.48", pb: true, place: "3rd" },
-    ]
-  },
-  {
-    id: "sa-schools-2025",
-    name: "SA Schools Championship",
-    date: "Apr 5-7, 2025",
-    location: "Bloemfontein, FS",
-    flag: "za",
-    results: [
-      { event: "50 Back", round: "Prelims", time: "30.60", pb: false, place: "9th" },
-      { event: "50 Back", round: "Finals", time: "30.58", pb: false, place: "8th" },
-      { event: "100 Back", round: "Prelims", time: "1:06.59", pb: false, place: "5th" },
-      { event: "100 Back", round: "Finals", time: "1:08.36", pb: false, place: "9th" },
-      { event: "50 Fly", round: "Prelims", time: "27.73", pb: true, place: "3rd" },
-      { event: "50 Fly", round: "Finals", time: "27.58", pb: true, place: "4th" },
-      { event: "100 Fly", round: "Prelims", time: "1:05.50", pb: true, place: "6th" },
-      { event: "100 Fly", round: "Finals", time: "1:04.69", pb: true, place: "5th" },
-    ]
-  },
-  {
-    id: "sa-level-3-regional-2025",
-    name: "SA Level 3 Regional Age Group",
-    date: "Mar 20-23, 2025",
-    location: "NTS, GP",
-    flag: "za",
-    results: [
-      { event: "50 Free", round: "Prelims", time: "26.23", pb: true, place: "2nd" },
-      { event: "50 Free", round: "Finals", time: "26.09", pb: true, place: "3rd" },
-      { event: "100 Free", round: "Prelims", time: "58.97", pb: true, place: "8th" },
-      { event: "100 Free", round: "Finals", time: "59.16", pb: true, place: "8th" },
-      { event: "200 Free", round: "Prelims", time: "2:16.09", pb: false, place: "9th" },
-      { event: "200 Free", round: "Finals", time: "2:14.36", pb: true, place: "7th" },
-      { event: "50 Back", round: "Prelims", time: "30.34", pb: true, place: "2nd" },
-      { event: "50 Back", round: "Finals", time: "30.86", pb: true, place: "2nd" },
-      { event: "100 Back", round: "Prelims", time: "1:06.87", pb: true, place: "2nd" },
-      { event: "100 Back", round: "Finals", time: "1:06.54", pb: true, place: "1st" },
-      { event: "200 Back", round: "Prelims", time: "2:37.51", pb: false, place: "8th" },
-      { event: "50 Breast", round: "Prelims", time: "34.79", pb: true, place: "9th" },
-      { event: "50 Breast", round: "Finals", time: "34.61", pb: true, place: "9th" },
-      { event: "50 Fly", round: "Prelims", time: "28.19", pb: true, place: "4th" },
-      { event: "50 Fly", round: "Finals", time: "28.40", pb: true, place: "4th" },
-      { event: "100 Fly", round: "Prelims", time: "1:05.73", pb: false, place: "5th" },
-      { event: "100 Fly", round: "Finals", time: "1:06.31", pb: false, place: "4th" },
-    ]
-  },
-  {
-    id: "cga-summer-gala-2025",
-    name: "CGA Summer Gala #4 Level",
-    date: "Jan 25, 2025",
-    location: "RSA",
-    flag: "za",
-    results: [
-      { event: "200 Free", round: "Timed Finals", time: "2:16.66", pb: false, place: "2nd" },
-      { event: "100 Breast", round: "Timed Finals", time: "1:19.91", pb: true, place: "5th" },
-      { event: "50 Fly", round: "Timed Finals", time: "28.75", pb: false, place: "1st" },
-      { event: "100 Fly", round: "Timed Finals", time: "1:05.51", pb: true, place: "1st" },
-    ]
-  },
-  {
-    id: "nws-championships-2024",
-    name: "NWS Championships 2024",
-    date: "Dec 7-10, 2024",
-    location: "Potchefstroom, NW",
-    flag: "za",
-    results: [
-      { event: "50 Free", round: "Prelims", time: "27.28", pb: true, place: "2nd" },
-      { event: "50 Free", round: "Finals", time: "27.38", pb: true, place: "2nd" },
-      { event: "100 Free", round: "Prelims", time: "1:00.71", pb: false, place: "2nd" },
-      { event: "100 Free", round: "Finals", time: "59.36", pb: true, place: "2nd" },
-      { event: "200 Free", round: "Prelims", time: "2:16.52", pb: false, place: "3rd" },
-      { event: "200 Free", round: "Finals", time: "2:15.36", pb: false, place: "3rd" },
-      { event: "50 Back", round: "Timed Finals", time: "30.87", pb: true, place: "1st" },
-      { event: "100 Back", round: "Prelims", time: "1:08.71", pb: true, place: "1st" },
-      { event: "100 Back", round: "Finals", time: "1:08.12", pb: true, place: "1st" },
-      { event: "200 Back", round: "Prelims", time: "2:35.98", pb: false, place: "1st" },
-      { event: "200 Back", round: "Finals", time: "2:32.44", pb: false, place: "1st" },
-      { event: "50 Breast", round: "Prelims", time: "35.09", pb: true, place: "2nd" },
-      { event: "50 Breast", round: "Finals", time: "35.71", pb: true, place: "2nd" },
-      { event: "100 Breast", round: "Prelims", time: "1:22.47", pb: true, place: "3rd" },
-      { event: "100 Breast", round: "Finals", time: "1:22.33", pb: true, place: "4th" },
-      { event: "50 Fly", round: "Prelims", time: "28.61", pb: true, place: "2nd" },
-      { event: "50 Fly", round: "Finals", time: "28.74", pb: true, place: "2nd" },
-      { event: "100 Fly", round: "Timed Finals", time: "1:07.34", pb: true, place: "1st" },
-      { event: "200 IM", round: "Prelims", time: "2:37.30", pb: false, place: "3rd" },
-      { event: "200 IM", round: "Finals", time: "2:31.86", pb: false, place: "2nd" },
-    ]
-  },
-];
-
-const upcomingEvents = [
-  { name: "NW Age Group Champs", date: "Jan 20-22, 2026", location: "Klerksdorp, NW" },
-  { name: "SA Junior Nationals", date: "Mar 5-8, 2026", location: "Cape Town, WC" },
-  { name: "Africa Youth Games", date: "Apr 12-15, 2026", location: "Lagos, Nigeria" },
-];
-
-const teams = [
-  { name: "Swim Star Aquatics Rtb", location: "Rustenburg, NW" },
-  { name: "Northwest Schools", location: "NW, RSA" },
-  { name: "North West University Swim Club", location: "Noordbrug, NW" },
-  { name: "Fields College", location: "NW, RSA" },
-  { name: "North West Swimming", location: "NW, RSA" },
-];
-
-// FINA points progression (overall performance indicator based on all competitions)
-const finaProgressionData = [
-  { year: "2021", points: 180 },
-  { year: "2022", points: 240 },
-  { year: "2023", points: 350 },
-  { year: "2024", points: 420 },
-  { year: "2025", points: 495 },
-];
+// Convert allCompetitions to championship format for the dropdown
+const championships = allCompetitions.slice(0, 8).map(comp => ({
+  id: comp.id,
+  name: comp.name,
+  date: comp.date,
+  location: comp.location,
+  flag: "za",
+  results: comp.results.map(r => {
+    const parts = r.event.split(' ');
+    const roundTypes = ['Prelims', 'Finals', 'Timed'];
+    let event = r.event;
+    let round = 'Timed Finals';
+    
+    for (const rt of roundTypes) {
+      if (r.event.includes(rt)) {
+        if (r.event.includes('Timed Finals')) {
+          event = r.event.replace(' Timed Finals', '');
+          round = 'Timed Finals';
+        } else if (r.event.includes('Finals')) {
+          event = r.event.replace(' Finals', '');
+          round = 'Finals';
+        } else if (r.event.includes('Prelims')) {
+          event = r.event.replace(' Prelims', '');
+          round = 'Prelims';
+        }
+        break;
+      }
+    }
+    
+    return {
+      event,
+      round,
+      time: r.time,
+      pb: r.pb || false,
+      place: r.place
+    };
+  }).filter(r => !r.event.includes('Extracted') && !r.event.includes('-R') && r.time !== 'DQ' && r.time !== 'NS' && r.time !== 'DNF' && r.time !== 'NT')
+}));
 
 interface SpecialtyData {
   name: string;
@@ -443,97 +316,12 @@ const ResultsSection = () => {
     return currentChampionship.results.filter(r => r.event === selectedEvent);
   }, [currentChampionship, selectedEvent]);
   
-  // Calculate specialties from ALL championship results
-  const { specialties, sprintPercent } = useMemo(() => {
-    const strokeScores: Record<string, number[]> = {
-      Free: [],
-      Back: [],
-      Breast: [],
-      Fly: [],
-      IM: []
-    };
-    
-    let sprintCount = 0;
-    let distanceCount = 0;
-    
-    // Aggregate from ALL competitions
-    championships.forEach(champ => {
-      champ.results.forEach(result => {
-        const placeNum = parseInt(result.place) || 8;
-        const score = Math.max(0, 100 - (placeNum - 1) * 12);
-        
-        if (result.event.includes("Free")) strokeScores.Free.push(score);
-        else if (result.event.includes("Back")) strokeScores.Back.push(score);
-        else if (result.event.includes("Breast")) strokeScores.Breast.push(score);
-        else if (result.event.includes("Fly")) strokeScores.Fly.push(score);
-        else if (result.event.includes("IM")) strokeScores.IM.push(score);
-        
-        // Determine sprint vs distance
-        const distance = parseInt(result.event) || 50;
-        if (distance <= 100) {
-          sprintCount++;
-        } else {
-          distanceCount++;
-        }
-      });
-    });
-    
-    const totalEvents = sprintCount + distanceCount;
-    const sprintPct = totalEvents > 0 ? Math.round((sprintCount / totalEvents) * 100) : 50;
-    
-    return {
-      specialties: Object.entries(strokeScores).map(([name, scores]) => ({
-        name,
-        value: scores.length > 0 ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : 0
-      })).filter(s => s.value > 0),
-      sprintPercent: sprintPct
-    };
-  }, []);
+  // Use the shared calculation function for accurate stats from ALL competitions
+  const careerData = useMemo(() => calculateCareerStats(), []);
   
-  // Calculate detailed rankings from ALL results
-  const rankings = useMemo(() => {
-    let totalEvents = 0;
-    let finalsAppearances = 0;
-    let topThreeFinishes = 0;
-    let bestEvents: { event: string; place: string; time: string }[] = [];
-    
-    championships.forEach(champ => {
-      champ.results.forEach(r => {
-        totalEvents++;
-        if (r.round === "Finals") finalsAppearances++;
-        const placeNum = parseInt(r.place) || 99;
-        if (placeNum <= 3) topThreeFinishes++;
-        if (placeNum === 1) {
-          bestEvents.push({ event: r.event, place: r.place, time: r.time });
-        }
-      });
-    });
-    
-    // Get unique gold events
-    const uniqueGolds = [...new Set(bestEvents.map(e => e.event))].slice(0, 3);
-    
-    return {
-      totalEvents,
-      finalsAppearances,
-      topThreeFinishes,
-      winRate: totalEvents > 0 ? Math.round((topThreeFinishes / totalEvents) * 100) : 0,
-      bestEvents: uniqueGolds
-    };
-  }, []);
-  
-  // Calculate stats from ALL championships
-  const stats = useMemo(() => {
-    let first = 0, second = 0, third = 0, pbs = 0;
-    championships.forEach(champ => {
-      champ.results.forEach(r => {
-        if (r.place === "1st") first++;
-        if (r.place === "2nd") second++;
-        if (r.place === "3rd") third++;
-        if (r.pb) pbs++;
-      });
-    });
-    return { first, second, third, pbs };
-  }, []);
+  const { specialties, sprintPercent } = careerData;
+  const rankings = careerData.rankings;
+  const stats = careerData.stats;
 
   return (
     <section id="results" className="py-24 bg-background">
