@@ -9,6 +9,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import saFlag from "@/assets/sa-flag.png";
 
 // Championship data - synced with all results data
 const championships = [
@@ -412,15 +413,11 @@ const SprintDistanceBar = ({ sprintPercent }: { sprintPercent: number }) => {
 const FlagIcon = ({ country }: { country: string }) => {
   if (country === "za") {
     return (
-      <div className="w-8 h-6 rounded overflow-hidden flex flex-col">
-        <div className="h-1/3 bg-[hsl(0,65%,45%)]" />
-        <div className="h-1/3 bg-white flex items-center justify-center">
-          <div className="w-3 h-2 bg-[hsl(120,50%,30%)] flex items-center justify-center">
-            <div className="w-1 h-1 bg-[hsl(50,85%,50%)]" />
-          </div>
-        </div>
-        <div className="h-1/3 bg-[hsl(220,70%,35%)]" />
-      </div>
+      <img 
+        src={saFlag} 
+        alt="South Africa" 
+        className="w-8 h-6 rounded object-cover shadow-sm"
+      />
     );
   }
   return null;
