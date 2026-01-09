@@ -29,7 +29,7 @@ const HeroSection = () => {
         ease: "easeOut"
       }}>
           <span className="inline-block px-4 py-2 mb-6 text-sm font-medium tracking-widest uppercase bg-primary/10 border border-primary/30 rounded-full text-primary">
-            Professional Swimmer
+            National-Level Swimmer
           </span>
         </motion.div>
 

@@ -9,7 +9,7 @@ const Footer = () => {
             <span className="text-foreground">RUAN</span>
             <span className="text-primary">.</span>
             <span className="text-muted-foreground font-sans text-sm font-normal ml-3">
-              Professional Swimmer
+              National-Level Swimmer
             </span>
           </div>
           
