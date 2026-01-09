@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, MapPin, Instagram, Twitter } from "lucide-react";
+import { Mail, MapPin, Instagram, Facebook } from "lucide-react";
 const ContactSection = () => {
   return <section id="contact" className="py-24 bg-background relative overflow-hidden">
       {/* Background decoration */}
@@ -30,7 +30,7 @@ const ContactSection = () => {
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-          <motion.a href="mailto:contact@alexwaters.com" initial={{
+          <motion.a href="mailto:management@ruanfaber.co.za" initial={{
           opacity: 0,
           y: 30
         }} whileInView={{
@@ -46,10 +46,10 @@ const ContactSection = () => {
               <Mail className="w-6 h-6 text-primary" />
             </div>
             <h3 className="font-display text-xl mb-2">Email</h3>
-            <p className="text-muted-foreground text-sm">contact@alexwaters.com</p>
+            <p className="text-muted-foreground text-sm">management@ruanfaber.co.za</p>
           </motion.a>
 
-          <motion.a href="https://instagram.com" target="_blank" rel="noopener noreferrer" initial={{
+          <motion.a href="https://instagram.com/ruan_faber" target="_blank" rel="noopener noreferrer" initial={{
           opacity: 0,
           y: 30
         }} whileInView={{
@@ -65,10 +65,10 @@ const ContactSection = () => {
               <Instagram className="w-6 h-6 text-primary" />
             </div>
             <h3 className="font-display text-xl mb-2">Instagram</h3>
-            <p className="text-muted-foreground text-sm">@alexwaters_swim</p>
+            <p className="text-muted-foreground text-sm">@ruan_faber</p>
           </motion.a>
 
-          <motion.a href="https://twitter.com" target="_blank" rel="noopener noreferrer" initial={{
+          <motion.a href="https://facebook.com/ruan.faber" target="_blank" rel="noopener noreferrer" initial={{
           opacity: 0,
           y: 30
         }} whileInView={{
@@ -81,10 +81,10 @@ const ContactSection = () => {
           delay: 0.3
         }} className="group bg-card-gradient border border-border rounded-xl p-8 text-center hover:border-primary/50 transition-all duration-300">
             <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center group-hover:bg-primary/20 transition-all duration-300">
-              <Twitter className="w-6 h-6 text-primary" />
+              <Facebook className="w-6 h-6 text-primary" />
             </div>
-            <h3 className="font-display text-xl mb-2">Twitter</h3>
-            <p className="text-muted-foreground text-sm">@alexwaters</p>
+            <h3 className="font-display text-xl mb-2">Facebook</h3>
+            <p className="text-muted-foreground text-sm">Ruan Faber</p>
           </motion.a>
         </div>
 
