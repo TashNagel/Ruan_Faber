@@ -620,9 +620,29 @@ const allCompetitions = [
     location: "Potchefstroom, NW, RSA",
     year: "2023",
     results: [
-      { event: "100 L Free", time: "1:01.06", imp: null, place: "1st" },
-      { event: "50 L Fly", time: "29.04", imp: null, place: "1st" },
-      { event: "50 L Free", time: "27.81", imp: null, place: "2nd" },
+      { event: "50 Free Prelims", time: "28.19", imp: null, place: "2nd" },
+      { event: "50 Free Finals", time: "27.81", imp: null, place: "2nd" },
+      { event: "100 Free Timed Finals", time: "1:01.06", imp: null, place: "1st" },
+      { event: "100 Free Prelims", time: "NS", imp: null, place: "-" },
+      { event: "400 Free Timed Finals", time: "5:02.62", imp: null, place: "7th" },
+      { event: "50 Back Timed Finals", time: "34.99", imp: null, place: "3rd" },
+      { event: "100 Back Prelims", time: "1:11.55", imp: null, place: "2nd" },
+      { event: "100 Back Finals", time: "1:10.28", imp: null, place: "1st" },
+      { event: "200 Back Prelims", time: "2:40.06", imp: null, place: "1st" },
+      { event: "200 Back Finals", time: "2:42.88", imp: null, place: "1st" },
+      { event: "50 Breast Prelims", time: "39.32", imp: null, place: "4th" },
+      { event: "50 Breast Finals", time: "40.44", imp: null, place: "5th" },
+      { event: "100 Breast Prelims", time: "1:28.18", imp: null, place: "3rd" },
+      { event: "100 Breast Finals", time: "1:26.66", imp: null, place: "3rd" },
+      { event: "200 Breast Prelims", time: "3:19.54", imp: null, place: "4th" },
+      { event: "200 Breast Finals", time: "3:19.54", imp: null, place: "3rd" },
+      { event: "50 Fly Extracted", time: "2:41.16", imp: "+132.12", place: "-" },
+      { event: "50 Fly Prelims", time: "29.23", imp: null, place: "1st" },
+      { event: "50 Fly Finals", time: "29.04", imp: null, place: "1st" },
+      { event: "50 Fly Extracted", time: "2:37.63", imp: "+128.59", place: "-" },
+      { event: "100 Fly Timed Finals", time: "1:06.00", imp: null, place: "1st" },
+      { event: "200 Fly Timed Finals", time: "DNF", imp: null, place: "-" },
+      { event: "200 IM Prelims", time: "2:41.16", imp: null, place: "2nd" },
     ]
   },
   {
@@ -633,7 +653,8 @@ const allCompetitions = [
     location: "Potchefstroom, NW, RSA",
     year: "2023",
     results: [
-      { event: "100 L Fly", time: "1:12.35", imp: null, place: "4th" },
+      { event: "100 Fly Timed Finals", time: "1:12.35", imp: null, place: "4th" },
+      { event: "200 MED-R (Fly) Timed Finals", time: "NT", imp: null, place: "1st" },
     ]
   },
   {
