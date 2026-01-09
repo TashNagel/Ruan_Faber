@@ -57,6 +57,54 @@ const championships = [
       { event: "200 L IM", round: "Finals", time: "2:32.80", pb: true, place: "3rd" },
     ]
   },
+  {
+    id: "sa-regional-aquatic-2022",
+    name: "SA Regional Aquatic Champs 2022",
+    date: "Mar 29-Apr 2, 2022",
+    location: "Pretoria, AG",
+    flag: "za",
+    results: [
+      { event: "50 Free", round: "Prelims", time: "DQ", pb: false, place: "-" },
+      { event: "100 Free", round: "Prelims", time: "1:07.13", pb: false, place: "13th" },
+      { event: "200 Free", round: "Prelims", time: "2:27.03", pb: true, place: "75th" },
+      { event: "400 Free", round: "Timed Finals", time: "5:20.48", pb: false, place: "8th" },
+      { event: "50 Back", round: "Prelims", time: "35.02", pb: true, place: "6th" },
+      { event: "50 Back", round: "Finals", time: "34.94", pb: true, place: "8th" },
+      { event: "100 Back", round: "Prelims", time: "1:17.95", pb: true, place: "16th" },
+      { event: "200 Back", round: "Prelims", time: "2:47.62", pb: true, place: "12th" },
+      { event: "50 Fly", round: "Prelims", time: "31.11", pb: false, place: "2nd" },
+      { event: "50 Fly", round: "Finals", time: "31.04", pb: false, place: "4th" },
+      { event: "100 Fly", round: "Prelims", time: "1:12.69", pb: true, place: "4th" },
+      { event: "100 Fly", round: "Finals", time: "1:12.24", pb: true, place: "4th" },
+      { event: "200 IM", round: "Prelims", time: "2:48.42", pb: false, place: "8th" },
+      { event: "200 IM", round: "Finals", time: "2:46.43", pb: true, place: "6th" },
+    ]
+  },
+  {
+    id: "sa-schools-2022",
+    name: "SA Schools Swimming Championships",
+    date: "Mar 26-28, 2022",
+    location: "Tshwane",
+    flag: "za",
+    results: [
+      { event: "200 L IM", round: "Finals", time: "2:46.55", pb: false, place: "5th" },
+      { event: "100 L Fly", round: "Finals", time: "1:13.53", pb: false, place: "6th" },
+      { event: "200 L Free", round: "Prelims", time: "2:31.97", pb: false, place: "10th" },
+      { event: "100 Back", round: "Prelims", time: "1:18.20", pb: false, place: "6th" },
+      { event: "100 Back", round: "Finals", time: "1:18.37", pb: false, place: "6th" },
+      { event: "200 Back", round: "Prelims", time: "2:53.67", pb: false, place: "6th" },
+      { event: "200 Back", round: "Finals", time: "2:50.94", pb: false, place: "7th" },
+      { event: "100 Fly", round: "Prelims", time: "1:13.82", pb: false, place: "5th" },
+      { event: "100 Fly", round: "Finals", time: "1:13.53", pb: false, place: "6th" },
+      { event: "200 IM", round: "Prelims", time: "2:47.30", pb: false, place: "4th" },
+      { event: "200 IM", round: "Finals", time: "2:46.55", pb: false, place: "5th" },
+      { event: "200 FR-R (Split)", round: "Timed Finals", time: "NT", pb: false, place: "5th" },
+      { event: "400 FR-R (Split)", round: "Timed Finals", time: "1:07.16", pb: false, place: "3rd" },
+      { event: "200 MED-R (Leadoff)", round: "Timed Finals", time: "NT", pb: false, place: "3rd" },
+      { event: "400 MED-R (Extracted)", round: "Timed Finals", time: "1:19.96", pb: false, place: "3rd" },
+      { event: "400 MED-R (Leadoff)", round: "Timed Finals", time: "1:19.96", pb: false, place: "3rd" },
+    ]
+  },
 ];
 
 const upcomingEvents = [
