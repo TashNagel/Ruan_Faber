@@ -177,6 +177,8 @@ const teams = [
 
 // FINA points progression (overall performance indicator based on all competitions)
 const finaProgressionData = [
+  { year: "2021", points: 180 },
+  { year: "2022", points: 240 },
   { year: "2023", points: 350 },
   { year: "2024", points: 420 },
   { year: "2025", points: 495 },
@@ -544,7 +546,7 @@ const ResultsSection = () => {
           className="text-center mb-16"
         >
           <span className="text-primary text-sm tracking-widest uppercase font-medium">
-            Season 2025-2026
+            Career Results 2021-2026
           </span>
           <h2 className="font-display text-5xl md:text-6xl lg:text-7xl mt-4">
             COMPETITION RESULTS
