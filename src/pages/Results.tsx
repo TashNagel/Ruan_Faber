@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { Search, ChevronDown } from "lucide-react";
 import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -9,8 +8,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Input } from "@/components/ui/input";
-
 // Records data derived from personal records by season
 const recordsData = [
   {
@@ -907,9 +904,7 @@ const CompetitionCard = ({ competition }: { competition: typeof allCompetitions[
 
 const Results = () => {
   const [selectedYear, setSelectedYear] = useState<string>("all");
-  const [searchQuery, setSearchQuery] = useState("");
   const [selectedPRSeason, setSelectedPRSeason] = useState<string>("all");
-
   const years = useMemo(() => {
     const uniqueYears = [...new Set(allCompetitions.map(c => c.year))];
     return uniqueYears.sort((a, b) => b.localeCompare(a));
@@ -921,12 +916,9 @@ const Results = () => {
 
   const filteredCompetitions = useMemo(() => {
     return allCompetitions.filter(comp => {
-      const matchesYear = selectedYear === "all" || comp.year === selectedYear;
-      const matchesSearch = comp.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                           comp.location.toLowerCase().includes(searchQuery.toLowerCase());
-      return matchesYear && matchesSearch;
+      return selectedYear === "all" || comp.year === selectedYear;
     });
-  }, [selectedYear, searchQuery]);
+  }, [selectedYear]);
 
   const filteredPRSeasons = useMemo(() => {
     if (selectedPRSeason === "all") return personalRecordsBySeason;
@@ -971,35 +963,20 @@ const Results = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="flex flex-col sm:flex-row gap-4 mb-8"
+          className="flex items-center gap-4 mb-8"
         >
-          <div className="flex items-center gap-2">
-            <span className="text-sm text-muted-foreground">Year</span>
-            <Select value={selectedYear} onValueChange={setSelectedYear}>
-              <SelectTrigger className="w-[120px] bg-card border-border">
-                <SelectValue placeholder="All" />
-              </SelectTrigger>
-              <SelectContent className="bg-card border-border">
-                <SelectItem value="all">All</SelectItem>
-                {years.map(year => (
-                  <SelectItem key={year} value={year}>{year}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-          
-          <div className="flex items-center gap-2 flex-1 max-w-xs">
-            <span className="text-sm text-muted-foreground">Name</span>
-            <div className="relative flex-1">
-              <Input
-                placeholder="Search meet"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="bg-card border-border pr-8"
-              />
-              <Search className="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-            </div>
-          </div>
+          <span className="text-sm text-muted-foreground">Year</span>
+          <Select value={selectedYear} onValueChange={setSelectedYear}>
+            <SelectTrigger className="w-[120px] bg-card border-border">
+              <SelectValue placeholder="All" />
+            </SelectTrigger>
+            <SelectContent className="bg-card border-border">
+              <SelectItem value="all">All</SelectItem>
+              {years.map(year => (
+                <SelectItem key={year} value={year}>{year}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </motion.div>
 
         {/* Results Grid */}
