@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 
 const stats = [
-  { value: "12", label: "Olympic Medals", suffix: "" },
-  { value: "8", label: "World Records", suffix: "" },
-  { value: "45.82", label: "100m Freestyle PR", suffix: "s" },
-  { value: "15", label: "Years Pro", suffix: "+" },
+  { value: "40", label: "Gold Medals", suffix: "+" },
+  { value: "11", label: "Years Swimming", suffix: "" },
+  { value: "27.08", label: "50m Freestyle PR", suffix: "s" },
+  { value: "2025", label: "SA Schools Team", suffix: "" },
 ];
 
 const StatsSection = () => {
