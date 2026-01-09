@@ -169,40 +169,17 @@ const upcomingEvents = [
 const teams = [
   { name: "Swim Star Aquatics Rtb", location: "Rustenburg, NW" },
   { name: "Northwest Schools", location: "NW, RSA" },
-  { name: "North West University Swim Club", location: "Noordburg, NW" },
+  { name: "North West University Swim Club", location: "Noordbrug, NW" },
+  { name: "Fields College", location: "NW, RSA" },
+  { name: "North West Swimming", location: "NW, RSA" },
 ];
 
-// Time history for progression chart (by event)
-const timeHistory: Record<string, { date: string; time: string; seconds: number }[]> = {
-  "50 L Free": [
-    { date: "Jan 2025", time: "27.80", seconds: 27.80 },
-    { date: "Mar 2025", time: "27.20", seconds: 27.20 },
-    { date: "Jun 2025", time: "26.85", seconds: 26.85 },
-    { date: "Oct 2025", time: "26.50", seconds: 26.50 },
-    { date: "Dec 2025", time: "26.26", seconds: 26.26 },
-  ],
-  "100 L Free": [
-    { date: "Jan 2025", time: "1:02.50", seconds: 62.50 },
-    { date: "Mar 2025", time: "1:01.20", seconds: 61.20 },
-    { date: "Jun 2025", time: "59.80", seconds: 59.80 },
-    { date: "Oct 2025", time: "58.90", seconds: 58.90 },
-    { date: "Dec 2025", time: "58.55", seconds: 58.55 },
-  ],
-  "50 L Back": [
-    { date: "Jan 2025", time: "32.50", seconds: 32.50 },
-    { date: "Mar 2025", time: "31.80", seconds: 31.80 },
-    { date: "Jun 2025", time: "31.20", seconds: 31.20 },
-    { date: "Oct 2025", time: "30.45", seconds: 30.45 },
-    { date: "Dec 2025", time: "30.08", seconds: 30.08 },
-  ],
-  "100 L Back": [
-    { date: "Jan 2025", time: "1:12.00", seconds: 72.00 },
-    { date: "Mar 2025", time: "1:10.50", seconds: 70.50 },
-    { date: "Jun 2025", time: "1:08.80", seconds: 68.80 },
-    { date: "Oct 2025", time: "1:07.20", seconds: 67.20 },
-    { date: "Dec 2025", time: "1:07.60", seconds: 67.60 },
-  ],
-};
+// FINA points progression (overall performance indicator based on all competitions)
+const finaProgressionData = [
+  { year: "2023", points: 350 },
+  { year: "2024", points: 420 },
+  { year: "2025", points: 495 },
+];
 
 interface SpecialtyData {
   name: string;
@@ -307,28 +284,45 @@ const SpecialtyChart = ({ specialties }: { specialties: SpecialtyData[] }) => {
   );
 };
 
-const ProgressionChart = ({ eventName }: { eventName: string }) => {
-  const data = timeHistory[eventName] || timeHistory["50 L Free"];
-  const maxTime = Math.max(...data.map(d => d.seconds));
-  const minTime = Math.min(...data.map(d => d.seconds));
-  const range = maxTime - minTime || 1;
+const ProgressionChart = () => {
+  const data = finaProgressionData;
+  const maxPoints = Math.max(...data.map(d => d.points));
+  const minPoints = Math.min(...data.map(d => d.points));
+  const range = maxPoints - minPoints || 1;
   
   const width = 280;
   const height = 120;
-  const padding = { top: 20, right: 20, bottom: 30, left: 10 };
+  const padding = { top: 20, right: 20, bottom: 30, left: 40 };
   const chartWidth = width - padding.left - padding.right;
   const chartHeight = height - padding.top - padding.bottom;
   
   const points = data.map((d, i) => ({
     x: padding.left + (i / (data.length - 1)) * chartWidth,
-    y: padding.top + ((maxTime - d.seconds) / range) * chartHeight * 0.8 + chartHeight * 0.1,
+    y: padding.top + ((maxPoints - d.points) / range) * chartHeight * 0.8 + chartHeight * 0.1,
     ...d
   }));
   
   const linePath = points.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x} ${p.y}`).join(' ');
   
+  // Y-axis labels
+  const yLabels = [maxPoints, Math.round((maxPoints + minPoints) / 2), minPoints];
+  
   return (
     <svg viewBox={`0 0 ${width} ${height}`} className="w-full">
+      {/* Y-axis labels */}
+      {yLabels.map((label, i) => (
+        <text
+          key={i}
+          x={padding.left - 5}
+          y={padding.top + (i / 2) * chartHeight}
+          textAnchor="end"
+          dominantBaseline="middle"
+          className="fill-muted-foreground text-[9px]"
+        >
+          {label}
+        </text>
+      ))}
+      
       {/* Grid lines */}
       {[0, 1, 2].map((i) => (
         <line
@@ -378,9 +372,9 @@ const ProgressionChart = ({ eventName }: { eventName: string }) => {
             x={point.x}
             y={height - 8}
             textAnchor="middle"
-            className="fill-muted-foreground text-[8px]"
+            className="fill-muted-foreground text-[10px]"
           >
-            {point.date.split(' ')[0]}
+            {point.year}
           </text>
         </g>
       ))}
@@ -392,17 +386,26 @@ const ProgressionChart = ({ eventName }: { eventName: string }) => {
           <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
         </linearGradient>
       </defs>
-      
-      {/* Best time indicator */}
-      <text
-        x={width - padding.right}
-        y={padding.top - 5}
-        textAnchor="end"
-        className="fill-primary text-[10px] font-medium"
-      >
-        Best: {data[data.length - 1].time}
-      </text>
     </svg>
+  );
+};
+
+// Sprint vs Distance indicator component
+const SprintDistanceBar = ({ sprintPercent }: { sprintPercent: number }) => {
+  return (
+    <div className="flex items-center gap-4 mt-4">
+      <span className="text-sm text-muted-foreground w-12">Sprint</span>
+      <div className="flex-1 h-2 bg-secondary rounded-full overflow-hidden">
+        <motion.div
+          initial={{ width: 0 }}
+          whileInView={{ width: `${sprintPercent}%` }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="h-full bg-primary rounded-full"
+        />
+      </div>
+      <span className="text-sm text-muted-foreground w-16 text-right">Distance</span>
+    </div>
   );
 };
 
@@ -441,8 +444,8 @@ const ResultsSection = () => {
     return currentChampionship.results.filter(r => r.event === selectedEvent);
   }, [currentChampionship, selectedEvent]);
   
-  // Calculate specialties from championship results
-  const specialties = useMemo(() => {
+  // Calculate specialties from ALL championship results
+  const { specialties, sprintPercent } = useMemo(() => {
     const strokeScores: Record<string, number[]> = {
       Free: [],
       Back: [],
@@ -451,22 +454,42 @@ const ResultsSection = () => {
       IM: []
     };
     
-    currentChampionship.results.forEach(result => {
-      const placeNum = parseInt(result.place) || 8;
-      const score = Math.max(0, 100 - (placeNum - 1) * 12);
-      
-      if (result.event.includes("Free")) strokeScores.Free.push(score);
-      else if (result.event.includes("Back")) strokeScores.Back.push(score);
-      else if (result.event.includes("Breast")) strokeScores.Breast.push(score);
-      else if (result.event.includes("Fly")) strokeScores.Fly.push(score);
-      else if (result.event.includes("IM")) strokeScores.IM.push(score);
+    let sprintCount = 0;
+    let distanceCount = 0;
+    
+    // Aggregate from ALL competitions
+    championships.forEach(champ => {
+      champ.results.forEach(result => {
+        const placeNum = parseInt(result.place) || 8;
+        const score = Math.max(0, 100 - (placeNum - 1) * 12);
+        
+        if (result.event.includes("Free")) strokeScores.Free.push(score);
+        else if (result.event.includes("Back")) strokeScores.Back.push(score);
+        else if (result.event.includes("Breast")) strokeScores.Breast.push(score);
+        else if (result.event.includes("Fly")) strokeScores.Fly.push(score);
+        else if (result.event.includes("IM")) strokeScores.IM.push(score);
+        
+        // Determine sprint vs distance
+        const distance = parseInt(result.event) || 50;
+        if (distance <= 100) {
+          sprintCount++;
+        } else {
+          distanceCount++;
+        }
+      });
     });
     
-    return Object.entries(strokeScores).map(([name, scores]) => ({
-      name,
-      value: scores.length > 0 ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : 0
-    })).filter(s => s.value > 0);
-  }, [currentChampionship]);
+    const totalEvents = sprintCount + distanceCount;
+    const sprintPct = totalEvents > 0 ? Math.round((sprintCount / totalEvents) * 100) : 50;
+    
+    return {
+      specialties: Object.entries(strokeScores).map(([name, scores]) => ({
+        name,
+        value: scores.length > 0 ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : 0
+      })).filter(s => s.value > 0),
+      sprintPercent: sprintPct
+    };
+  }, []);
   
   // Calculate rankings based on results
   const rankings = useMemo(() => {
@@ -547,10 +570,7 @@ const ResultsSection = () => {
             >
               <h3 className="font-display text-xl mb-6 text-center">Specialty</h3>
               <SpecialtyChart specialties={specialties} />
-              <div className="flex justify-center gap-8 mt-4 text-sm text-muted-foreground">
-                <span>Sprint</span>
-                <span>Distance</span>
-              </div>
+              <SprintDistanceBar sprintPercent={sprintPercent} />
             </motion.div>
 
             {/* Progression Chart */}
@@ -565,20 +585,7 @@ const ResultsSection = () => {
                 <h3 className="font-display text-xl">Progression</h3>
                 <TrendingUp className="w-5 h-5 text-primary" />
               </div>
-              <Select 
-                value={selectedEvent === "all" ? uniqueEvents[0] : selectedEvent} 
-                onValueChange={(val) => setSelectedEvent(val)}
-              >
-                <SelectTrigger className="w-full mb-4 bg-secondary border-border">
-                  <SelectValue placeholder="Select event" />
-                </SelectTrigger>
-                <SelectContent className="bg-card border-border">
-                  {uniqueEvents.filter(e => timeHistory[e]).map(event => (
-                    <SelectItem key={event} value={event}>{event}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              <ProgressionChart eventName={selectedEvent === "all" ? uniqueEvents[0] : selectedEvent} />
+              <ProgressionChart />
             </motion.div>
 
             {/* Teams */}
