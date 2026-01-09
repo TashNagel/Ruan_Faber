@@ -116,68 +116,268 @@ const recordsData = [
   }
 ];
 
-// Personal Records by Club/Age Group with FINA Points
-const personalRecords = [
+// Personal Records by Season, Club/Age Group with FINA Points
+const personalRecordsBySeason = [
   {
-    club: "North West University Swim Club",
-    pointSystem: "FINA",
-    ageGroup: "13 - 14",
-    score: "309.85",
-    events: [
-      { event: "200 L IM", meet: "SA Schools Swimming Championships", baseTime: "1:54.00", time: "2:46.55", points: 321 },
-      { event: "100 L Fly", meet: "SA Schools Swimming Championships", baseTime: "49.45", time: "1:13.53", points: 304 },
-      { event: "200 L Free", meet: "SA Schools Swimming Championships", baseTime: "1:42.00", time: "2:31.97", points: 302 },
-      { event: "100 L Back", meet: "SA Schools Swimming Championships", baseTime: "51.85", time: "1:18.20", points: 291 },
+    season: "2025-2026",
+    records: [
+      {
+        club: "Swim Star Aquatics Rtb",
+        pointSystem: "FINA",
+        ageGroup: "Open",
+        score: "505.5",
+        events: [
+          { event: "50 L Fly", meet: "NWS Championships", baseTime: "22.27", time: "27.84", points: 512 },
+          { event: "50 L Free", meet: "NWS Championships", baseTime: "20.91", time: "26.26", points: 505 },
+          { event: "100 L Free", meet: "NWS Championships", baseTime: "46.4", time: "58.55", points: 498 },
+          { event: "50 L Back", meet: "NWS Championships", baseTime: "23.55", time: "30.08", points: 480 },
+        ]
+      },
+      {
+        club: "RSA",
+        pointSystem: "FINA",
+        ageGroup: "Open",
+        score: "505.5",
+        events: [
+          { event: "50 L Fly", meet: "NWS Championships", baseTime: "22.27", time: "27.84", points: 512 },
+          { event: "50 L Free", meet: "NWS Championships", baseTime: "20.91", time: "26.26", points: 505 },
+          { event: "100 L Free", meet: "NWS Championships", baseTime: "46.4", time: "58.55", points: 498 },
+          { event: "50 L Back", meet: "NWS Championships", baseTime: "23.55", time: "30.08", points: 480 },
+        ]
+      },
+      {
+        club: "Swim Star Aquatics Rtb",
+        pointSystem: "FINA",
+        ageGroup: "15 - 18",
+        score: "505.5",
+        events: [
+          { event: "50 L Fly", meet: "NWS Championships", baseTime: "22.27", time: "27.84", points: 512 },
+          { event: "50 L Free", meet: "NWS Championships", baseTime: "20.91", time: "26.26", points: 505 },
+          { event: "100 L Free", meet: "NWS Championships", baseTime: "46.4", time: "58.55", points: 498 },
+          { event: "50 L Back", meet: "NWS Championships", baseTime: "23.55", time: "30.08", points: 480 },
+        ]
+      },
     ]
   },
   {
-    club: "Swim Star Aquatics Rtb",
-    pointSystem: "FINA",
-    ageGroup: "Open",
-    score: "350.30",
-    events: [
-      { event: "50 L Fly", meet: "SA Regional Aquatic Champs 2022", baseTime: "22.27", time: "31.04", points: 369 },
-      { event: "100 L Free", meet: "SA Regional Aquatic Champs 2022", baseTime: "46.91", time: "1:07.13", points: 341 },
-      { event: "200 L Free", meet: "SA Regional Aquatic Champs 2022", baseTime: "1:42.00", time: "2:27.03", points: 334 },
-      { event: "400 L Free", meet: "SA Regional Aquatic Champs 2022", baseTime: "3:40.07", time: "5:20.48", points: 324 },
+    season: "2024-2025",
+    records: [
+      {
+        club: "Swim Star Aquatics Rtb",
+        pointSystem: "FINA",
+        ageGroup: "Open",
+        score: "500.4",
+        events: [
+          { event: "50 L Free", meet: "SA Level 3 Regional Age Group", baseTime: "20.91", time: "26.09", points: 515 },
+          { event: "50 L Fly", meet: "SA Level 3 Regional Age Group", baseTime: "22.27", time: "28.19", points: 493 },
+          { event: "100 L Free", meet: "NWS Championships", baseTime: "46.86", time: "59.36", points: 492 },
+          { event: "50 L Back", meet: "SA Level 3 Regional Age Group", baseTime: "23.55", time: "30.34", points: 468 },
+        ]
+      },
+      {
+        club: "RSA",
+        pointSystem: "FINA",
+        ageGroup: "Open",
+        score: "513.6",
+        events: [
+          { event: "50 L Fly", meet: "SA Schools Championship", baseTime: "22.27", time: "27.58", points: 526 },
+          { event: "50 L Free", meet: "SA Level 3 Regional Age Group", baseTime: "20.91", time: "26.09", points: 515 },
+          { event: "100 L Free", meet: "NWS Championships", baseTime: "46.86", time: "59.36", points: 492 },
+          { event: "50 L Back", meet: "SA Level 3 Regional Age Group", baseTime: "23.55", time: "30.34", points: 468 },
+        ]
+      },
+      {
+        club: "Swim Star Aquatics Rtb",
+        pointSystem: "FINA",
+        ageGroup: "15 - 18",
+        score: "500.4",
+        events: [
+          { event: "50 L Free", meet: "SA Level 3 Regional Age Group", baseTime: "20.91", time: "26.09", points: 515 },
+          { event: "50 L Fly", meet: "SA Level 3 Regional Age Group", baseTime: "22.27", time: "28.19", points: 493 },
+          { event: "100 L Free", meet: "NWS Championships", baseTime: "46.86", time: "59.36", points: 492 },
+          { event: "50 L Back", meet: "SA Level 3 Regional Age Group", baseTime: "23.55", time: "30.34", points: 468 },
+        ]
+      },
+      {
+        club: "Northwest Schools",
+        pointSystem: "FINA",
+        ageGroup: "Open",
+        score: "487.3",
+        events: [
+          { event: "50 L Fly", meet: "SA Schools Championship", baseTime: "22.27", time: "27.58", points: 526 },
+          { event: "100 L Back", meet: "SA Schools Championship", baseTime: "51.6", time: "1:06.59", points: 465 },
+          { event: "50 L Back", meet: "SA Schools Championship", baseTime: "23.55", time: "30.58", points: 457 },
+          { event: "100 L Fly", meet: "SA Schools Championship", baseTime: "49.45", time: "1:04.69", points: 447 },
+        ]
+      },
     ]
   },
   {
-    club: "North West University Swim Club",
-    pointSystem: "FINA",
-    ageGroup: "Open",
-    score: "309.85",
-    events: [
-      { event: "200 L IM", meet: "SA Schools Swimming Championships", baseTime: "1:54.00", time: "2:46.55", points: 321 },
-      { event: "100 L Fly", meet: "SA Schools Swimming Championships", baseTime: "49.45", time: "1:13.53", points: 304 },
-      { event: "200 L Free", meet: "SA Schools Swimming Championships", baseTime: "1:42.00", time: "2:31.97", points: 302 },
-      { event: "100 L Back", meet: "SA Schools Swimming Championships", baseTime: "51.85", time: "1:18.20", points: 291 },
+    season: "2023-2024",
+    records: [
+      {
+        club: "North West Swimming",
+        pointSystem: "FINA",
+        ageGroup: "Open",
+        score: "364.52",
+        events: [
+          { event: "50 L Fly", meet: "4 + 1 Inter provincial Gala", baseTime: "22.27", time: "30.07", points: 406 },
+          { event: "100 L Fly", meet: "4 + 1 Inter provincial Gala", baseTime: "49.45", time: "1:08.13", points: 382 },
+          { event: "–", meet: "Proxy time", baseTime: "–", time: "–", points: 254 },
+          { event: "–", meet: "Proxy time", baseTime: "–", time: "–", points: 226 },
+        ]
+      },
+      {
+        club: "Fields College",
+        pointSystem: "FINA",
+        ageGroup: "Open",
+        score: "433",
+        events: [
+          { event: "100 L Free", meet: "NW School Championships", baseTime: "46.86", time: "1:01.12", points: 451 },
+          { event: "50 L Fly", meet: "NW School Championships", baseTime: "22.27", time: "29.46", points: 432 },
+          { event: "200 L Free", meet: "NW School Championships", baseTime: "1:42.00", time: "2:18.39", points: 400 },
+          { event: "50 L Back", meet: "NW School Championships", baseTime: "23.55", time: "32.06", points: 396 },
+        ]
+      },
+      {
+        club: "Swim Star Aquatics Rtb",
+        pointSystem: "FINA",
+        ageGroup: "Open",
+        score: "446",
+        events: [
+          { event: "100 L Free", meet: "NWS Long Course Championships", baseTime: "46.86", time: "1:01.06", points: 452 },
+          { event: "50 L Fly", meet: "NWS Long Course Championships", baseTime: "22.27", time: "29.04", points: 451 },
+          { event: "50 L Free", meet: "NWS Long Course Championships", baseTime: "20.91", time: "27.81", points: 425 },
+          { event: "100 L Fly", meet: "NWS Long Course Championships", baseTime: "49.45", time: "1:06.00", points: 421 },
+        ]
+      },
+      {
+        club: "North West University Swim Club",
+        pointSystem: "FINA",
+        ageGroup: "Open",
+        score: "419.1",
+        events: [
+          { event: "50 L Fly", meet: "SA Schools Championship", baseTime: "22.27", time: "29.5", points: 430 },
+          { event: "100 L Back", meet: "SA Schools Championship", baseTime: "51.6", time: "1:08.89", points: 420 },
+          { event: "50 L Back", meet: "SA Schools Championship", baseTime: "23.55", time: "32.05", points: 397 },
+          { event: "100 L Fly", meet: "SA Schools Championship", baseTime: "49.45", time: "1:07.60", points: 391 },
+        ]
+      },
+      {
+        club: "RSA",
+        pointSystem: "FINA",
+        ageGroup: "Open",
+        score: "446",
+        events: [
+          { event: "100 L Free", meet: "NWS Long Course Championships", baseTime: "46.86", time: "1:01.06", points: 452 },
+          { event: "50 L Fly", meet: "NWS Long Course Championships", baseTime: "22.27", time: "29.04", points: 451 },
+          { event: "50 L Free", meet: "NWS Long Course Championships", baseTime: "20.91", time: "27.81", points: 425 },
+          { event: "100 L Fly", meet: "NWS Long Course Championships", baseTime: "49.45", time: "1:06.00", points: 421 },
+        ]
+      },
+      {
+        club: "North West University Swim Club",
+        pointSystem: "FINA",
+        ageGroup: "15 - 18",
+        score: "419.1",
+        events: [
+          { event: "50 L Fly", meet: "SA Schools Championship", baseTime: "22.27", time: "29.5", points: 430 },
+          { event: "100 L Back", meet: "SA Schools Championship", baseTime: "51.6", time: "1:08.89", points: 420 },
+          { event: "50 L Back", meet: "SA Schools Championship", baseTime: "23.55", time: "32.05", points: 397 },
+          { event: "100 L Fly", meet: "SA Schools Championship", baseTime: "49.45", time: "1:07.60", points: 391 },
+        ]
+      },
+      {
+        club: "Swim Star Aquatics Rtb",
+        pointSystem: "FINA",
+        ageGroup: "13 - 14",
+        score: "446",
+        events: [
+          { event: "100 L Free", meet: "NWS Long Course Championships", baseTime: "46.86", time: "1:01.06", points: 452 },
+          { event: "50 L Fly", meet: "NWS Long Course Championships", baseTime: "22.27", time: "29.04", points: 451 },
+          { event: "50 L Free", meet: "NWS Long Course Championships", baseTime: "20.91", time: "27.81", points: 425 },
+          { event: "100 L Fly", meet: "NWS Long Course Championships", baseTime: "49.45", time: "1:06.00", points: 421 },
+        ]
+      },
+      {
+        club: "North West Swimming",
+        pointSystem: "FINA",
+        ageGroup: "13 - 14",
+        score: "364.52",
+        events: [
+          { event: "50 L Fly", meet: "4 + 1 Inter provincial Gala", baseTime: "22.27", time: "30.07", points: 406 },
+          { event: "100 L Fly", meet: "4 + 1 Inter provincial Gala", baseTime: "49.45", time: "1:08.13", points: 382 },
+          { event: "–", meet: "Proxy time", baseTime: "–", time: "–", points: 254 },
+          { event: "–", meet: "Proxy time", baseTime: "–", time: "–", points: 226 },
+        ]
+      },
     ]
   },
   {
-    club: "RSA",
-    pointSystem: "FINA",
-    ageGroup: "Open",
-    score: "350.30",
-    events: [
-      { event: "50 L Fly", meet: "SA Regional Aquatic Champs 2022", baseTime: "22.27", time: "31.04", points: 369 },
-      { event: "100 L Free", meet: "SA Regional Aquatic Champs 2022", baseTime: "46.91", time: "1:07.13", points: 341 },
-      { event: "200 L Free", meet: "SA Regional Aquatic Champs 2022", baseTime: "1:42.00", time: "2:27.03", points: 334 },
-      { event: "400 L Free", meet: "SA Regional Aquatic Champs 2022", baseTime: "3:40.07", time: "5:20.48", points: 324 },
+    season: "2021-2022",
+    records: [
+      {
+        club: "North West University Swim Club",
+        pointSystem: "FINA",
+        ageGroup: "13 - 14",
+        score: "309.85",
+        events: [
+          { event: "200 L IM", meet: "SA Schools Swimming Championships", baseTime: "1:54.00", time: "2:46.55", points: 321 },
+          { event: "100 L Fly", meet: "SA Schools Swimming Championships", baseTime: "49.45", time: "1:13.53", points: 304 },
+          { event: "200 L Free", meet: "SA Schools Swimming Championships", baseTime: "1:42.00", time: "2:31.97", points: 302 },
+          { event: "100 L Back", meet: "SA Schools Swimming Championships", baseTime: "51.85", time: "1:18.20", points: 291 },
+        ]
+      },
+      {
+        club: "Swim Star Aquatics Rtb",
+        pointSystem: "FINA",
+        ageGroup: "Open",
+        score: "350.30",
+        events: [
+          { event: "50 L Fly", meet: "SA Regional Aquatic Champs 2022", baseTime: "22.27", time: "31.04", points: 369 },
+          { event: "100 L Free", meet: "SA Regional Aquatic Champs 2022", baseTime: "46.91", time: "1:07.13", points: 341 },
+          { event: "200 L Free", meet: "SA Regional Aquatic Champs 2022", baseTime: "1:42.00", time: "2:27.03", points: 334 },
+          { event: "400 L Free", meet: "SA Regional Aquatic Champs 2022", baseTime: "3:40.07", time: "5:20.48", points: 324 },
+        ]
+      },
+      {
+        club: "North West University Swim Club",
+        pointSystem: "FINA",
+        ageGroup: "Open",
+        score: "309.85",
+        events: [
+          { event: "200 L IM", meet: "SA Schools Swimming Championships", baseTime: "1:54.00", time: "2:46.55", points: 321 },
+          { event: "100 L Fly", meet: "SA Schools Swimming Championships", baseTime: "49.45", time: "1:13.53", points: 304 },
+          { event: "200 L Free", meet: "SA Schools Swimming Championships", baseTime: "1:42.00", time: "2:31.97", points: 302 },
+          { event: "100 L Back", meet: "SA Schools Swimming Championships", baseTime: "51.85", time: "1:18.20", points: 291 },
+        ]
+      },
+      {
+        club: "RSA",
+        pointSystem: "FINA",
+        ageGroup: "Open",
+        score: "350.30",
+        events: [
+          { event: "50 L Fly", meet: "SA Regional Aquatic Champs 2022", baseTime: "22.27", time: "31.04", points: 369 },
+          { event: "100 L Free", meet: "SA Regional Aquatic Champs 2022", baseTime: "46.91", time: "1:07.13", points: 341 },
+          { event: "200 L Free", meet: "SA Regional Aquatic Champs 2022", baseTime: "1:42.00", time: "2:27.03", points: 334 },
+          { event: "400 L Free", meet: "SA Regional Aquatic Champs 2022", baseTime: "3:40.07", time: "5:20.48", points: 324 },
+        ]
+      },
+      {
+        club: "Swim Star Aquatics Rtb",
+        pointSystem: "FINA",
+        ageGroup: "13 - 14",
+        score: "350.30",
+        events: [
+          { event: "50 L Fly", meet: "SA Regional Aquatic Champs 2022", baseTime: "22.27", time: "31.04", points: 369 },
+          { event: "100 L Free", meet: "SA Regional Aquatic Champs 2022", baseTime: "46.91", time: "1:07.13", points: 341 },
+          { event: "200 L Free", meet: "SA Regional Aquatic Champs 2022", baseTime: "1:42.00", time: "2:27.03", points: 334 },
+          { event: "400 L Free", meet: "SA Regional Aquatic Champs 2022", baseTime: "3:40.07", time: "5:20.48", points: 324 },
+        ]
+      },
     ]
   },
-  {
-    club: "Swim Star Aquatics Rtb",
-    pointSystem: "FINA",
-    ageGroup: "13 - 14",
-    score: "350.30",
-    events: [
-      { event: "50 L Fly", meet: "SA Regional Aquatic Champs 2022", baseTime: "22.27", time: "31.04", points: 369 },
-      { event: "100 L Free", meet: "SA Regional Aquatic Champs 2022", baseTime: "46.91", time: "1:07.13", points: 341 },
-      { event: "200 L Free", meet: "SA Regional Aquatic Champs 2022", baseTime: "1:42.00", time: "2:27.03", points: 334 },
-      { event: "400 L Free", meet: "SA Regional Aquatic Champs 2022", baseTime: "3:40.07", time: "5:20.48", points: 324 },
-    ]
-  }
 ];
 
 // All competitions data
@@ -541,10 +741,15 @@ const CompetitionCard = ({ competition }: { competition: typeof allCompetitions[
 const Results = () => {
   const [selectedYear, setSelectedYear] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedPRSeason, setSelectedPRSeason] = useState<string>("all");
 
   const years = useMemo(() => {
     const uniqueYears = [...new Set(allCompetitions.map(c => c.year))];
     return uniqueYears.sort((a, b) => b.localeCompare(a));
+  }, []);
+
+  const prSeasons = useMemo(() => {
+    return personalRecordsBySeason.map(s => s.season);
   }, []);
 
   const filteredCompetitions = useMemo(() => {
@@ -555,6 +760,11 @@ const Results = () => {
       return matchesYear && matchesSearch;
     });
   }, [selectedYear, searchQuery]);
+
+  const filteredPRSeasons = useMemo(() => {
+    if (selectedPRSeason === "all") return personalRecordsBySeason;
+    return personalRecordsBySeason.filter(s => s.season === selectedPRSeason);
+  }, [selectedPRSeason]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -751,69 +961,107 @@ const Results = () => {
           transition={{ delay: 0.35 }}
           className="mt-16"
         >
-          <div className="flex items-center gap-3 mb-8">
-            <div className="w-1 h-8 bg-gradient-to-b from-primary to-primary/30 rounded-full" />
-            <h2 className="font-display text-2xl md:text-3xl">PERSONAL RECORDS</h2>
+          <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
+            <div className="flex items-center gap-3">
+              <div className="w-1 h-8 bg-gradient-to-b from-primary to-primary/30 rounded-full" />
+              <h2 className="font-display text-2xl md:text-3xl">PERSONAL RECORDS</h2>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-muted-foreground">Season</span>
+              <Select value={selectedPRSeason} onValueChange={setSelectedPRSeason}>
+                <SelectTrigger className="w-[140px] bg-card border-border">
+                  <SelectValue placeholder="All Seasons" />
+                </SelectTrigger>
+                <SelectContent className="bg-card border-border">
+                  <SelectItem value="all">All Seasons</SelectItem>
+                  {prSeasons.map(season => (
+                    <SelectItem key={season} value={season}>{season}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
           </div>
 
-          <div className="space-y-6">
-            {personalRecords.map((record, recordIdx) => (
+          <div className="space-y-10">
+            {filteredPRSeasons.map((seasonData, seasonIdx) => (
               <motion.div
-                key={`${record.club}-${record.ageGroup}-${recordIdx}`}
+                key={seasonData.season}
+                id={`pr-season-${seasonData.season}`}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 + recordIdx * 0.05 }}
-                className="bg-card border border-border rounded-xl overflow-hidden"
+                transition={{ delay: 0.4 + seasonIdx * 0.05 }}
               >
-                {/* Header */}
-                <div className="p-5 border-b border-border/50 bg-gradient-to-r from-card to-background">
-                  <div className="flex flex-wrap items-center justify-between gap-4">
-                    <div>
-                      <h3 className="font-semibold text-foreground text-lg">{record.club}</h3>
-                      <div className="flex items-center gap-3 mt-1">
-                        <span className="text-xs px-2 py-0.5 rounded bg-muted text-muted-foreground uppercase tracking-wider">
-                          {record.pointSystem}
-                        </span>
-                        <span className="text-primary text-sm font-medium">{record.ageGroup}</span>
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <span className="text-xs text-muted-foreground uppercase tracking-wider block">Score</span>
-                      <span className="font-display text-3xl text-primary">{record.score}</span>
-                    </div>
+                {/* Season Header */}
+                <div className="flex items-center gap-4 mb-5">
+                  <div className="relative">
+                    <div className="w-3 h-3 rounded-full bg-primary shadow-lg shadow-primary/50" />
+                    <div className="absolute inset-0 w-3 h-3 rounded-full bg-primary animate-ping opacity-30" />
                   </div>
+                  <h3 className="font-display text-lg text-foreground tracking-wide">Season {seasonData.season}</h3>
+                  <div className="flex-1 h-px bg-gradient-to-r from-border to-transparent" />
                 </div>
 
-                {/* Events Table */}
-                <div className="overflow-x-auto">
-                  <table className="w-full text-sm">
-                    <thead>
-                      <tr className="border-b border-border/50 bg-muted/30">
-                        <th className="text-left py-3 px-4 text-xs font-medium text-muted-foreground">Event</th>
-                        <th className="text-left py-3 px-4 text-xs font-medium text-muted-foreground">Meet</th>
-                        <th className="text-right py-3 px-4 text-xs font-medium text-muted-foreground">Base Time</th>
-                        <th className="text-right py-3 px-4 text-xs font-medium text-muted-foreground">Time</th>
-                        <th className="text-right py-3 px-4 text-xs font-medium text-muted-foreground">Points</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {record.events.map((event, eventIdx) => (
-                        <tr key={eventIdx} className="border-b border-border/30 last:border-0 hover:bg-muted/20 transition-colors">
-                          <td className="py-3 px-4 text-foreground font-medium">{event.event}</td>
-                          <td className="py-3 px-4 text-muted-foreground">{event.meet}</td>
-                          <td className="text-right py-3 px-4 text-muted-foreground font-mono">{event.baseTime}</td>
-                          <td className="text-right py-3 px-4">
-                            <span className="text-primary font-mono font-medium">{event.time}</span>
-                          </td>
-                          <td className="text-right py-3 px-4">
-                            <span className="inline-flex items-center justify-center min-w-[3rem] px-2 py-1 rounded-full bg-primary/10 text-primary font-semibold text-xs">
-                              {event.points}
-                            </span>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                <div className="space-y-6 pl-6">
+                  {seasonData.records.map((record, recordIdx) => (
+                    <motion.div
+                      key={`${record.club}-${record.ageGroup}-${recordIdx}`}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.45 + recordIdx * 0.03 }}
+                      className="bg-card border border-border rounded-xl overflow-hidden"
+                    >
+                      {/* Header */}
+                      <div className="p-5 border-b border-border/50 bg-gradient-to-r from-card to-background">
+                        <div className="flex flex-wrap items-center justify-between gap-4">
+                          <div>
+                            <h3 className="font-semibold text-foreground text-lg">{record.club}</h3>
+                            <div className="flex items-center gap-3 mt-1">
+                              <span className="text-xs px-2 py-0.5 rounded bg-muted text-muted-foreground uppercase tracking-wider">
+                                {record.pointSystem}
+                              </span>
+                              <span className="text-primary text-sm font-medium">Age group: {record.ageGroup}</span>
+                            </div>
+                          </div>
+                          <div className="text-right">
+                            <span className="text-xs text-muted-foreground uppercase tracking-wider block">Score</span>
+                            <span className="font-display text-3xl text-primary">{record.score}</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Events Table */}
+                      <div className="overflow-x-auto">
+                        <table className="w-full text-sm">
+                          <thead>
+                            <tr className="border-b border-border/50 bg-muted/30">
+                              <th className="text-left py-3 px-4 text-xs font-medium text-muted-foreground">Event</th>
+                              <th className="text-left py-3 px-4 text-xs font-medium text-muted-foreground">Meet</th>
+                              <th className="text-right py-3 px-4 text-xs font-medium text-muted-foreground">Base Time</th>
+                              <th className="text-right py-3 px-4 text-xs font-medium text-muted-foreground">Time</th>
+                              <th className="text-right py-3 px-4 text-xs font-medium text-muted-foreground">Points</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {record.events.map((event, eventIdx) => (
+                              <tr key={eventIdx} className="border-b border-border/30 last:border-0 hover:bg-muted/20 transition-colors">
+                                <td className="py-3 px-4 text-foreground font-medium">{event.event}</td>
+                                <td className="py-3 px-4 text-muted-foreground">{event.meet}</td>
+                                <td className="text-right py-3 px-4 text-muted-foreground font-mono">{event.baseTime}</td>
+                                <td className="text-right py-3 px-4">
+                                  <span className="text-primary font-mono font-medium">{event.time}</span>
+                                </td>
+                                <td className="text-right py-3 px-4">
+                                  <span className="inline-flex items-center justify-center min-w-[3rem] px-2 py-1 rounded-full bg-primary/10 text-primary font-semibold text-xs">
+                                    {event.points}
+                                  </span>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    </motion.div>
+                  ))}
                 </div>
               </motion.div>
             ))}
