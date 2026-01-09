@@ -11,6 +11,111 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 
+// Records data by season
+const recordsData = [
+  {
+    season: "Season 2025-2026",
+    categories: [
+      {
+        name: "RSA Club (Open)",
+        score: "505.50",
+        rankings: [
+          { name: "Swim Star Aquatics Rtb", place: "1st" }
+        ]
+      },
+      {
+        name: "RSA Club (15 - 18)",
+        score: "505.50",
+        rankings: [
+          { name: "Swim Star Aquatics Rtb", place: "1st" }
+        ]
+      }
+    ]
+  },
+  {
+    season: "Season 2024-2025",
+    categories: [
+      {
+        name: "RSA Club (Open)",
+        score: "500.40",
+        rankings: [
+          { name: "Swim Star Aquatics Rtb", place: "1st" }
+        ]
+      },
+      {
+        name: "RSA Club (15 - 18)",
+        score: "500.40",
+        rankings: [
+          { name: "Swim Star Aquatics Rtb", place: "1st" }
+        ]
+      },
+      {
+        name: "RSA High School",
+        score: "487.30",
+        rankings: [
+          { name: "Northwest Schools", place: "7th" }
+        ]
+      }
+    ]
+  },
+  {
+    season: "Season 2023-2024",
+    categories: [
+      {
+        name: "RSA Club (Open)",
+        score: "446.00",
+        rankings: [
+          { name: "North West Swimming", place: "19th" },
+          { name: "North West University Swim Club", place: "19th" },
+          { name: "Swim Star Aquatics Rtb", place: "1st" }
+        ]
+      },
+      {
+        name: "RSA Club (15 - 18)",
+        score: "419.10",
+        rankings: [
+          { name: "North West University Swim Club", place: "13th" }
+        ]
+      },
+      {
+        name: "RSA Club (13 - 14)",
+        score: "446.00",
+        rankings: [
+          { name: "North West Swimming", place: "5th" },
+          { name: "Swim Star Aquatics Rtb", place: "1st" }
+        ]
+      },
+      {
+        name: "RSA High School",
+        score: "433.00",
+        rankings: [
+          { name: "Fields College", place: "1st" }
+        ]
+      }
+    ]
+  },
+  {
+    season: "Season 2021-2022",
+    categories: [
+      {
+        name: "RSA Club (Open)",
+        score: "350.30",
+        rankings: [
+          { name: "Swim Star Aquatics Rtb", place: "1st" }
+        ]
+      },
+      {
+        name: "RSA Club (13 - 14)",
+        score: "350.30",
+        rankings: [
+          { name: "North West University Swim Club", place: "8th" },
+          { name: "Swim Star Aquatics Rtb", place: "1st" }
+        ]
+      }
+    ]
+  }
+];
+
 // All competitions data
 const allCompetitions = [
   {
@@ -368,11 +473,56 @@ const Results = () => {
           </div>
         )}
 
+        {/* Records Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.25 }}
+          className="mt-16"
+        >
+          <h2 className="font-display text-2xl md:text-3xl mb-6">RECORDS</h2>
+          
+          <div className="space-y-6">
+            {recordsData.map((season, seasonIdx) => (
+              <motion.div
+                key={season.season}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 + seasonIdx * 0.05 }}
+                className="bg-card border border-border rounded-lg p-5"
+              >
+                <h3 className="font-semibold text-foreground mb-4">{season.season}</h3>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {season.categories.map((category, catIdx) => (
+                    <div key={catIdx} className="bg-background/50 rounded-lg p-4 border border-border/50">
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="text-primary font-medium text-sm">{category.name}</span>
+                        <span className="text-foreground font-mono text-sm">{category.score}</span>
+                      </div>
+                      <div className="space-y-2">
+                        {category.rankings.map((rank, rankIdx) => (
+                          <div key={rankIdx} className="flex items-center gap-2">
+                            <div className="w-6 h-6 rounded-full bg-muted/50 flex items-center justify-center shrink-0">
+                              <div className="w-3 h-3 rounded-full bg-muted" />
+                            </div>
+                            <span className="text-muted-foreground text-sm flex-1 truncate">{rank.name}</span>
+                            <span className="text-muted-foreground text-sm">{rank.place}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
         {/* Stats Summary */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
+          transition={{ delay: 0.4 }}
           className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4"
         >
           <div className="bg-card border border-border rounded-xl p-6 text-center">
