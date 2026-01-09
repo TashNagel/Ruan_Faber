@@ -11,21 +11,28 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 
-// Records data by season
+// Records data derived from personal records by season
 const recordsData = [
   {
     season: "Season 2025-2026",
     categories: [
       {
-        name: "RSA Club (Open)",
-        score: "505.50",
+        name: "RSA (Open)",
+        score: "505.5",
         rankings: [
           { name: "Swim Star Aquatics Rtb", place: "1st" }
         ]
       },
       {
-        name: "RSA Club (15 - 18)",
-        score: "505.50",
+        name: "Club (15 - 18)",
+        score: "505.5",
+        rankings: [
+          { name: "Swim Star Aquatics Rtb", place: "1st" }
+        ]
+      },
+      {
+        name: "Club (Open)",
+        score: "505.5",
         rankings: [
           { name: "Swim Star Aquatics Rtb", place: "1st" }
         ]
@@ -36,22 +43,29 @@ const recordsData = [
     season: "Season 2024-2025",
     categories: [
       {
-        name: "RSA Club (Open)",
-        score: "500.40",
+        name: "RSA (Open)",
+        score: "513.6",
         rankings: [
           { name: "Swim Star Aquatics Rtb", place: "1st" }
         ]
       },
       {
-        name: "RSA Club (15 - 18)",
-        score: "500.40",
+        name: "Club (Open)",
+        score: "500.4",
         rankings: [
           { name: "Swim Star Aquatics Rtb", place: "1st" }
         ]
       },
       {
-        name: "RSA High School",
-        score: "487.30",
+        name: "Club (15 - 18)",
+        score: "500.4",
+        rankings: [
+          { name: "Swim Star Aquatics Rtb", place: "1st" }
+        ]
+      },
+      {
+        name: "High School (Open)",
+        score: "487.3",
         rankings: [
           { name: "Northwest Schools", place: "7th" }
         ]
@@ -62,32 +76,39 @@ const recordsData = [
     season: "Season 2023-2024",
     categories: [
       {
-        name: "RSA Club (Open)",
-        score: "446.00",
+        name: "RSA (Open)",
+        score: "446",
         rankings: [
-          { name: "North West Swimming", place: "19th" },
-          { name: "North West University Swim Club", place: "19th" },
           { name: "Swim Star Aquatics Rtb", place: "1st" }
         ]
       },
       {
-        name: "RSA Club (15 - 18)",
-        score: "419.10",
+        name: "Club (Open)",
+        score: "446",
+        rankings: [
+          { name: "Swim Star Aquatics Rtb", place: "1st" },
+          { name: "North West University Swim Club", place: "19th" },
+          { name: "North West Swimming", place: "19th" }
+        ]
+      },
+      {
+        name: "Club (15 - 18)",
+        score: "419.1",
         rankings: [
           { name: "North West University Swim Club", place: "13th" }
         ]
       },
       {
-        name: "RSA Club (13 - 14)",
-        score: "446.00",
+        name: "Club (13 - 14)",
+        score: "446",
         rankings: [
-          { name: "North West Swimming", place: "5th" },
-          { name: "Swim Star Aquatics Rtb", place: "1st" }
+          { name: "Swim Star Aquatics Rtb", place: "1st" },
+          { name: "North West Swimming", place: "5th" }
         ]
       },
       {
-        name: "RSA High School",
-        score: "433.00",
+        name: "High School (Open)",
+        score: "433",
         rankings: [
           { name: "Fields College", place: "1st" }
         ]
@@ -98,18 +119,26 @@ const recordsData = [
     season: "Season 2021-2022",
     categories: [
       {
-        name: "RSA Club (Open)",
+        name: "RSA (Open)",
         score: "350.30",
         rankings: [
           { name: "Swim Star Aquatics Rtb", place: "1st" }
         ]
       },
       {
-        name: "RSA Club (13 - 14)",
+        name: "Club (Open)",
         score: "350.30",
         rankings: [
-          { name: "North West University Swim Club", place: "8th" },
-          { name: "Swim Star Aquatics Rtb", place: "1st" }
+          { name: "Swim Star Aquatics Rtb", place: "1st" },
+          { name: "North West University Swim Club", place: "8th" }
+        ]
+      },
+      {
+        name: "Club (13 - 14)",
+        score: "350.30",
+        rankings: [
+          { name: "Swim Star Aquatics Rtb", place: "1st" },
+          { name: "North West University Swim Club", place: "8th" }
         ]
       }
     ]
