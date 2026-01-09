@@ -130,6 +130,56 @@ const allCompetitions = [
       { event: "50 L Free", time: "27.46", imp: null, place: "1st" },
     ]
   },
+  {
+    id: "sa-regional-aquatic-2022",
+    name: "SA Regional Aquatic Champs 2022",
+    status: "Completed",
+    date: "Mar 29-Apr 2, 2022",
+    location: "Pretoria, AG, RSA",
+    year: "2022",
+    results: [
+      { event: "50 Free Prelims", time: "DQ", imp: null, place: "-" },
+      { event: "100 Free Prelims", time: "1:07.13", imp: null, place: "13th" },
+      { event: "200 Free Prelims", time: "2:27.03", imp: "-4.94", place: "75th" },
+      { event: "400 Free Timed Finals", time: "5:20.48", imp: null, place: "8th" },
+      { event: "50 Back Prelims", time: "35.02", imp: "-44.94", place: "6th" },
+      { event: "50 Back Finals", time: "34.94", imp: "-45.02", place: "8th" },
+      { event: "100 Back Prelims", time: "1:17.95", imp: "-0.25", place: "16th" },
+      { event: "200 Back Prelims", time: "2:47.62", imp: "-3.32", place: "12th" },
+      { event: "50 Fly Prelims", time: "31.11", imp: null, place: "2nd" },
+      { event: "50 Fly Finals", time: "31.04", imp: null, place: "4th" },
+      { event: "100 Fly Prelims", time: "1:12.69", imp: "-0.84", place: "4th" },
+      { event: "100 Fly Finals", time: "1:12.24", imp: "-1.29", place: "4th" },
+      { event: "200 IM Prelims", time: "2:48.42", imp: "+1.87", place: "8th" },
+      { event: "200 IM Finals", time: "2:46.43", imp: "-0.12", place: "6th" },
+    ]
+  },
+  {
+    id: "sa-schools-2022",
+    name: "SA Schools Swimming Championships",
+    status: "Completed",
+    date: "Mar 26-28, 2022",
+    location: "Tshwane, RSA",
+    year: "2022",
+    results: [
+      { event: "200 L IM", time: "2:46.55", imp: null, place: "5th" },
+      { event: "100 L Fly", time: "1:13.53", imp: null, place: "6th" },
+      { event: "200 L Free", time: "2:31.97", imp: null, place: "10th" },
+      { event: "100 Back Prelims", time: "1:18.20", imp: null, place: "6th" },
+      { event: "100 Back Finals", time: "1:18.37", imp: null, place: "6th" },
+      { event: "200 Back Prelims", time: "2:53.67", imp: null, place: "6th" },
+      { event: "200 Back Finals", time: "2:50.94", imp: null, place: "7th" },
+      { event: "100 Fly Prelims", time: "1:13.82", imp: null, place: "5th" },
+      { event: "100 Fly Finals", time: "1:13.53", imp: null, place: "6th" },
+      { event: "200 IM Prelims", time: "2:47.30", imp: null, place: "4th" },
+      { event: "200 IM Finals", time: "2:46.55", imp: null, place: "5th" },
+      { event: "200 FR-R (Split) Timed Finals", time: "NT", imp: null, place: "5th" },
+      { event: "400 FR-R (Split) Timed Finals", time: "1:07.16", imp: null, place: "3rd" },
+      { event: "200 MED-R (Leadoff) Timed Finals", time: "NT", imp: null, place: "3rd" },
+      { event: "400 MED-R (Extracted) Timed Finals", time: "1:19.96", imp: null, place: "3rd" },
+      { event: "400 MED-R (Leadoff) Timed Finals", time: "1:19.96", imp: null, place: "3rd" },
+    ]
+  },
 ];
 
 const SouthAfricanFlag = () => (
