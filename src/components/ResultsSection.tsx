@@ -1,29 +1,67 @@
 import { motion } from "framer-motion";
-import { Trophy, Medal, Clock, TrendingUp } from "lucide-react";
+import { Trophy, Medal, Clock, TrendingUp, Calendar, MapPin, ChevronDown } from "lucide-react";
+import { useState, useMemo } from "react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
-const competitionResults = [
-  { event: "50 L Free", round: "Finals", time: "26.26", pb: false, place: "2nd" },
-  { event: "50 L Free", round: "Prelims", time: "26.40", pb: false, place: "2nd" },
-  { event: "100 L Free", round: "Finals", time: "59.26", pb: false, place: "4th" },
-  { event: "100 L Free", round: "Prelims", time: "58.55", pb: true, place: "3rd" },
-  { event: "200 L Free", round: "Finals", time: "2:18.57", pb: false, place: "7th" },
-  { event: "200 L Free", round: "Prelims", time: "2:14.39", pb: false, place: "5th" },
-  { event: "400 L Free", round: "Timed Finals", time: "4:58.01", pb: true, place: "6th" },
-  { event: "50 L Back", round: "Finals", time: "30.85", pb: false, place: "2nd" },
-  { event: "50 L Back", round: "Prelims", time: "30.08", pb: true, place: "1st" },
-  { event: "100 L Back", round: "Finals", time: "1:08.00", pb: false, place: "3rd" },
-  { event: "100 L Back", round: "Prelims", time: "1:07.60", pb: false, place: "3rd" },
-  { event: "200 L Back", round: "Finals", time: "2:36.36", pb: false, place: "3rd" },
-  { event: "200 L Back", round: "Prelims", time: "2:35.79", pb: false, place: "2nd" },
-  { event: "50 L Breast", round: "Finals", time: "35.87", pb: false, place: "5th" },
-  { event: "50 L Breast", round: "Prelims", time: "34.17", pb: true, place: "3rd" },
-  { event: "100 L Breast", round: "Timed Finals", time: "1:22.28", pb: false, place: "7th" },
-  { event: "200 L Breast", round: "Prelims", time: "3:09.24", pb: true, place: "3rd" },
-  { event: "50 L Fly", round: "Timed Finals", time: "27.84", pb: false, place: "2nd" },
-  { event: "100 L Fly", round: "Finals", time: "1:05.56", pb: false, place: "3rd" },
-  { event: "100 L Fly", round: "Prelims", time: "1:04.86", pb: false, place: "3rd" },
-  { event: "200 L IM", round: "Timed Finals", time: "2:34.40", pb: false, place: "4th" },
-  { event: "400 L IM", round: "Timed Finals", time: "5:36.16", pb: false, place: "1st" },
+// Championship data - all other data derives from this
+const championships = [
+  {
+    id: "nws-2025",
+    name: "NWS Championships",
+    date: "Dec 6-9, 2025",
+    location: "Potchefstroom, NW",
+    flag: "za",
+    results: [
+      { event: "50 L Free", round: "Finals", time: "26.26", pb: false, place: "2nd" },
+      { event: "50 L Free", round: "Prelims", time: "26.40", pb: false, place: "2nd" },
+      { event: "100 L Free", round: "Finals", time: "59.26", pb: false, place: "4th" },
+      { event: "100 L Free", round: "Prelims", time: "58.55", pb: true, place: "3rd" },
+      { event: "200 L Free", round: "Finals", time: "2:18.57", pb: false, place: "7th" },
+      { event: "200 L Free", round: "Prelims", time: "2:14.39", pb: false, place: "5th" },
+      { event: "400 L Free", round: "Timed Finals", time: "4:58.01", pb: true, place: "6th" },
+      { event: "50 L Back", round: "Finals", time: "30.85", pb: false, place: "2nd" },
+      { event: "50 L Back", round: "Prelims", time: "30.08", pb: true, place: "1st" },
+      { event: "100 L Back", round: "Finals", time: "1:08.00", pb: false, place: "3rd" },
+      { event: "100 L Back", round: "Prelims", time: "1:07.60", pb: false, place: "3rd" },
+      { event: "200 L Back", round: "Finals", time: "2:36.36", pb: false, place: "3rd" },
+      { event: "200 L Back", round: "Prelims", time: "2:35.79", pb: false, place: "2nd" },
+      { event: "50 L Breast", round: "Finals", time: "35.87", pb: false, place: "5th" },
+      { event: "50 L Breast", round: "Prelims", time: "34.17", pb: true, place: "3rd" },
+      { event: "100 L Breast", round: "Timed Finals", time: "1:22.28", pb: false, place: "7th" },
+      { event: "200 L Breast", round: "Prelims", time: "3:09.24", pb: true, place: "3rd" },
+      { event: "50 L Fly", round: "Timed Finals", time: "27.84", pb: false, place: "2nd" },
+      { event: "100 L Fly", round: "Finals", time: "1:05.56", pb: false, place: "3rd" },
+      { event: "100 L Fly", round: "Prelims", time: "1:04.86", pb: false, place: "3rd" },
+      { event: "200 L IM", round: "Timed Finals", time: "2:34.40", pb: false, place: "4th" },
+      { event: "400 L IM", round: "Timed Finals", time: "5:36.16", pb: false, place: "1st" },
+    ]
+  },
+  {
+    id: "sa-schools-2025",
+    name: "SA Schools Championships",
+    date: "Oct 15-18, 2025",
+    location: "Durban, KZN",
+    flag: "za",
+    results: [
+      { event: "50 L Free", round: "Finals", time: "26.50", pb: false, place: "3rd" },
+      { event: "100 L Free", round: "Finals", time: "58.90", pb: false, place: "2nd" },
+      { event: "50 L Back", round: "Finals", time: "30.45", pb: false, place: "1st" },
+      { event: "100 L Back", round: "Finals", time: "1:07.20", pb: true, place: "2nd" },
+      { event: "200 L IM", round: "Finals", time: "2:32.80", pb: true, place: "3rd" },
+    ]
+  },
+];
+
+const upcomingEvents = [
+  { name: "NW Age Group Champs", date: "Jan 20-22, 2026", location: "Klerksdorp, NW" },
+  { name: "SA Junior Nationals", date: "Mar 5-8, 2026", location: "Cape Town, WC" },
+  { name: "Africa Youth Games", date: "Apr 12-15, 2026", location: "Lagos, Nigeria" },
 ];
 
 const teams = [
@@ -32,15 +70,44 @@ const teams = [
   { name: "North West University Swim Club", location: "Noordburg, NW" },
 ];
 
-const specialties = [
-  { name: "Free", value: 90 },
-  { name: "Back", value: 85 },
-  { name: "Breast", value: 60 },
-  { name: "Fly", value: 75 },
-  { name: "IM", value: 80 },
-];
+// Time history for progression chart (by event)
+const timeHistory: Record<string, { date: string; time: string; seconds: number }[]> = {
+  "50 L Free": [
+    { date: "Jan 2025", time: "27.80", seconds: 27.80 },
+    { date: "Mar 2025", time: "27.20", seconds: 27.20 },
+    { date: "Jun 2025", time: "26.85", seconds: 26.85 },
+    { date: "Oct 2025", time: "26.50", seconds: 26.50 },
+    { date: "Dec 2025", time: "26.26", seconds: 26.26 },
+  ],
+  "100 L Free": [
+    { date: "Jan 2025", time: "1:02.50", seconds: 62.50 },
+    { date: "Mar 2025", time: "1:01.20", seconds: 61.20 },
+    { date: "Jun 2025", time: "59.80", seconds: 59.80 },
+    { date: "Oct 2025", time: "58.90", seconds: 58.90 },
+    { date: "Dec 2025", time: "58.55", seconds: 58.55 },
+  ],
+  "50 L Back": [
+    { date: "Jan 2025", time: "32.50", seconds: 32.50 },
+    { date: "Mar 2025", time: "31.80", seconds: 31.80 },
+    { date: "Jun 2025", time: "31.20", seconds: 31.20 },
+    { date: "Oct 2025", time: "30.45", seconds: 30.45 },
+    { date: "Dec 2025", time: "30.08", seconds: 30.08 },
+  ],
+  "100 L Back": [
+    { date: "Jan 2025", time: "1:12.00", seconds: 72.00 },
+    { date: "Mar 2025", time: "1:10.50", seconds: 70.50 },
+    { date: "Jun 2025", time: "1:08.80", seconds: 68.80 },
+    { date: "Oct 2025", time: "1:07.20", seconds: 67.20 },
+    { date: "Dec 2025", time: "1:07.60", seconds: 67.60 },
+  ],
+};
 
-const SpecialtyChart = () => {
+interface SpecialtyData {
+  name: string;
+  value: number;
+}
+
+const SpecialtyChart = ({ specialties }: { specialties: SpecialtyData[] }) => {
   const centerX = 100;
   const centerY = 100;
   const radius = 70;
@@ -69,7 +136,6 @@ const SpecialtyChart = () => {
 
   return (
     <svg viewBox="0 0 200 200" className="w-full max-w-[200px] mx-auto">
-      {/* Grid circles */}
       {[20, 40, 60, 80, 100].map((percent) => (
         <circle
           key={percent}
@@ -83,7 +149,6 @@ const SpecialtyChart = () => {
         />
       ))}
       
-      {/* Grid lines */}
       {specialties.map((_, i) => {
         const point = getPoint(i, 100);
         return (
@@ -100,7 +165,6 @@ const SpecialtyChart = () => {
         );
       })}
       
-      {/* Data polygon */}
       <motion.path
         initial={{ opacity: 0, scale: 0.8 }}
         whileInView={{ opacity: 1, scale: 1 }}
@@ -112,7 +176,6 @@ const SpecialtyChart = () => {
         strokeWidth="2"
       />
       
-      {/* Data points */}
       {points.map((point, i) => (
         <circle
           key={i}
@@ -123,7 +186,6 @@ const SpecialtyChart = () => {
         />
       ))}
       
-      {/* Labels */}
       {specialties.map((s, i) => {
         const labelPoint = getLabelPoint(i);
         return (
@@ -143,10 +205,191 @@ const SpecialtyChart = () => {
   );
 };
 
+const ProgressionChart = ({ eventName }: { eventName: string }) => {
+  const data = timeHistory[eventName] || timeHistory["50 L Free"];
+  const maxTime = Math.max(...data.map(d => d.seconds));
+  const minTime = Math.min(...data.map(d => d.seconds));
+  const range = maxTime - minTime || 1;
+  
+  const width = 280;
+  const height = 120;
+  const padding = { top: 20, right: 20, bottom: 30, left: 10 };
+  const chartWidth = width - padding.left - padding.right;
+  const chartHeight = height - padding.top - padding.bottom;
+  
+  const points = data.map((d, i) => ({
+    x: padding.left + (i / (data.length - 1)) * chartWidth,
+    y: padding.top + ((maxTime - d.seconds) / range) * chartHeight * 0.8 + chartHeight * 0.1,
+    ...d
+  }));
+  
+  const linePath = points.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x} ${p.y}`).join(' ');
+  
+  return (
+    <svg viewBox={`0 0 ${width} ${height}`} className="w-full">
+      {/* Grid lines */}
+      {[0, 1, 2].map((i) => (
+        <line
+          key={i}
+          x1={padding.left}
+          y1={padding.top + (i / 2) * chartHeight}
+          x2={width - padding.right}
+          y2={padding.top + (i / 2) * chartHeight}
+          stroke="hsl(var(--border))"
+          strokeWidth="1"
+          opacity="0.3"
+        />
+      ))}
+      
+      {/* Area fill */}
+      <motion.path
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        d={`${linePath} L ${points[points.length - 1].x} ${height - padding.bottom} L ${points[0].x} ${height - padding.bottom} Z`}
+        fill="url(#progressGradient)"
+      />
+      
+      {/* Line */}
+      <motion.path
+        initial={{ pathLength: 0 }}
+        whileInView={{ pathLength: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1 }}
+        d={linePath}
+        fill="none"
+        stroke="hsl(var(--primary))"
+        strokeWidth="2"
+      />
+      
+      {/* Points */}
+      {points.map((point, i) => (
+        <g key={i}>
+          <circle
+            cx={point.x}
+            cy={point.y}
+            r="4"
+            fill="hsl(var(--primary))"
+          />
+          <text
+            x={point.x}
+            y={height - 8}
+            textAnchor="middle"
+            className="fill-muted-foreground text-[8px]"
+          >
+            {point.date.split(' ')[0]}
+          </text>
+        </g>
+      ))}
+      
+      {/* Gradient definition */}
+      <defs>
+        <linearGradient id="progressGradient" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.3" />
+          <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+      
+      {/* Best time indicator */}
+      <text
+        x={width - padding.right}
+        y={padding.top - 5}
+        textAnchor="end"
+        className="fill-primary text-[10px] font-medium"
+      >
+        Best: {data[data.length - 1].time}
+      </text>
+    </svg>
+  );
+};
+
+const FlagIcon = ({ country }: { country: string }) => {
+  if (country === "za") {
+    return (
+      <div className="w-8 h-6 rounded overflow-hidden flex flex-col">
+        <div className="h-1/3 bg-[hsl(0,65%,45%)]" />
+        <div className="h-1/3 bg-white flex items-center justify-center">
+          <div className="w-3 h-2 bg-[hsl(120,50%,30%)] flex items-center justify-center">
+            <div className="w-1 h-1 bg-[hsl(50,85%,50%)]" />
+          </div>
+        </div>
+        <div className="h-1/3 bg-[hsl(220,70%,35%)]" />
+      </div>
+    );
+  }
+  return null;
+};
+
 const ResultsSection = () => {
-  const topResults = competitionResults.filter(r => 
-    r.place === "1st" || r.place === "2nd" || r.pb
-  ).slice(0, 8);
+  const [selectedChampionship, setSelectedChampionship] = useState(championships[0].id);
+  const [selectedEvent, setSelectedEvent] = useState<string>("all");
+  
+  const currentChampionship = championships.find(c => c.id === selectedChampionship) || championships[0];
+  
+  // Get unique events from current championship
+  const uniqueEvents = useMemo(() => {
+    const events = new Set(currentChampionship.results.map(r => r.event));
+    return Array.from(events);
+  }, [currentChampionship]);
+  
+  // Filter results by selected event
+  const filteredResults = useMemo(() => {
+    if (selectedEvent === "all") return currentChampionship.results;
+    return currentChampionship.results.filter(r => r.event === selectedEvent);
+  }, [currentChampionship, selectedEvent]);
+  
+  // Calculate specialties from championship results
+  const specialties = useMemo(() => {
+    const strokeScores: Record<string, number[]> = {
+      Free: [],
+      Back: [],
+      Breast: [],
+      Fly: [],
+      IM: []
+    };
+    
+    currentChampionship.results.forEach(result => {
+      const placeNum = parseInt(result.place) || 8;
+      const score = Math.max(0, 100 - (placeNum - 1) * 12);
+      
+      if (result.event.includes("Free")) strokeScores.Free.push(score);
+      else if (result.event.includes("Back")) strokeScores.Back.push(score);
+      else if (result.event.includes("Breast")) strokeScores.Breast.push(score);
+      else if (result.event.includes("Fly")) strokeScores.Fly.push(score);
+      else if (result.event.includes("IM")) strokeScores.IM.push(score);
+    });
+    
+    return Object.entries(strokeScores).map(([name, scores]) => ({
+      name,
+      value: scores.length > 0 ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : 0
+    })).filter(s => s.value > 0);
+  }, [currentChampionship]);
+  
+  // Calculate rankings based on results
+  const rankings = useMemo(() => {
+    const results = currentChampionship.results;
+    const avgPlace = results.reduce((sum, r) => {
+      const place = parseInt(r.place) || 8;
+      return sum + place;
+    }, 0) / results.length;
+    
+    return {
+      position: avgPlace <= 2 ? 1 : avgPlace <= 3 ? 2 : avgPlace <= 4 ? 3 : 4,
+      team: teams[0].name
+    };
+  }, [currentChampionship]);
+  
+  // Calculate stats
+  const stats = useMemo(() => {
+    const results = currentChampionship.results;
+    return {
+      first: results.filter(r => r.place === "1st").length,
+      second: results.filter(r => r.place === "2nd").length,
+      third: results.filter(r => r.place === "3rd").length,
+      pbs: results.filter(r => r.pb).length
+    };
+  }, [currentChampionship]);
 
   return (
     <section id="results" className="py-24 bg-background">
@@ -167,7 +410,7 @@ const ResultsSection = () => {
         </motion.div>
 
         <div className="grid lg:grid-cols-3 gap-8">
-          {/* Left Column - Rankings & Specialty */}
+          {/* Left Column - Rankings, Specialty & Progression */}
           <div className="space-y-8">
             {/* Current Ranking */}
             <motion.div
@@ -183,11 +426,11 @@ const ResultsSection = () => {
               </div>
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-primary/20 border border-primary/50 flex items-center justify-center">
-                  <span className="font-display text-xl text-primary">1</span>
+                  <span className="font-display text-xl text-primary">{rankings.position}</span>
                 </div>
                 <div>
-                  <p className="font-medium text-foreground">Swim Star Aquatics Rtb</p>
-                  <p className="text-sm text-muted-foreground">Season 2025-2026</p>
+                  <p className="font-medium text-foreground">{rankings.team}</p>
+                  <p className="text-sm text-muted-foreground">{currentChampionship.name}</p>
                 </div>
               </div>
             </motion.div>
@@ -201,11 +444,39 @@ const ResultsSection = () => {
               className="bg-card-gradient border border-border rounded-xl p-6"
             >
               <h3 className="font-display text-xl mb-6 text-center">Specialty</h3>
-              <SpecialtyChart />
+              <SpecialtyChart specialties={specialties} />
               <div className="flex justify-center gap-8 mt-4 text-sm text-muted-foreground">
                 <span>Sprint</span>
                 <span>Distance</span>
               </div>
+            </motion.div>
+
+            {/* Progression Chart */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="bg-card-gradient border border-border rounded-xl p-6"
+            >
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="font-display text-xl">Progression</h3>
+                <TrendingUp className="w-5 h-5 text-primary" />
+              </div>
+              <Select 
+                value={selectedEvent === "all" ? uniqueEvents[0] : selectedEvent} 
+                onValueChange={(val) => setSelectedEvent(val)}
+              >
+                <SelectTrigger className="w-full mb-4 bg-secondary border-border">
+                  <SelectValue placeholder="Select event" />
+                </SelectTrigger>
+                <SelectContent className="bg-card border-border">
+                  {uniqueEvents.filter(e => timeHistory[e]).map(event => (
+                    <SelectItem key={event} value={event}>{event}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <ProgressionChart eventName={selectedEvent === "all" ? uniqueEvents[0] : selectedEvent} />
             </motion.div>
 
             {/* Teams */}
@@ -235,7 +506,7 @@ const ResultsSection = () => {
             </motion.div>
           </div>
 
-          {/* Right Column - Latest Results Table */}
+          {/* Right Column - Results Table */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -244,29 +515,45 @@ const ResultsSection = () => {
             className="lg:col-span-2 bg-card-gradient border border-border rounded-xl overflow-hidden"
           >
             <div className="p-6 border-b border-border">
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-6 rounded overflow-hidden flex flex-col">
-                    <div className="h-1/3 bg-[hsl(0,65%,45%)]" />
-                    <div className="h-1/3 bg-white flex items-center justify-center">
-                      <div className="w-3 h-2 bg-[hsl(120,50%,30%)] flex items-center justify-center">
-                        <div className="w-1 h-1 bg-[hsl(50,85%,50%)]" />
-                      </div>
-                    </div>
-                    <div className="h-1/3 bg-[hsl(220,70%,35%)]" />
-                  </div>
+                  <FlagIcon country={currentChampionship.flag} />
                   <div>
-                    <h3 className="font-display text-xl">NWS Championships</h3>
-                    <p className="text-sm text-muted-foreground">Dec 6-9, 2025</p>
+                    <Select value={selectedChampionship} onValueChange={setSelectedChampionship}>
+                      <SelectTrigger className="border-0 p-0 h-auto font-display text-xl bg-transparent focus:ring-0">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent className="bg-card border-border">
+                        {championships.map(champ => (
+                          <SelectItem key={champ.id} value={champ.id}>
+                            {champ.name}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <p className="text-sm text-muted-foreground">{currentChampionship.date}</p>
                   </div>
                 </div>
-                <Medal className="w-5 h-5 text-primary" />
+                <div className="flex items-center gap-2">
+                  <Select value={selectedEvent} onValueChange={setSelectedEvent}>
+                    <SelectTrigger className="w-[160px] bg-secondary border-border">
+                      <SelectValue placeholder="All Events" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-card border-border">
+                      <SelectItem value="all">All Events</SelectItem>
+                      {uniqueEvents.map(event => (
+                        <SelectItem key={event} value={event}>{event}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <Medal className="w-5 h-5 text-primary" />
+                </div>
               </div>
             </div>
 
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto max-h-[500px] overflow-y-auto">
               <table className="w-full">
-                <thead>
+                <thead className="sticky top-0 bg-card">
                   <tr className="border-b border-border">
                     <th className="text-left py-3 px-4 text-sm font-medium text-muted-foreground">Event</th>
                     <th className="text-right py-3 px-4 text-sm font-medium text-muted-foreground">Time</th>
@@ -275,7 +562,7 @@ const ResultsSection = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {competitionResults.map((result, index) => (
+                  {filteredResults.map((result, index) => (
                     <motion.tr
                       key={`${result.event}-${result.round}-${index}`}
                       initial={{ opacity: 0, x: -20 }}
@@ -327,30 +614,66 @@ const ResultsSection = () => {
           <div className="bg-card-gradient border border-border rounded-xl p-6 text-center">
             <div className="flex items-center justify-center gap-2 mb-2">
               <Trophy className="w-5 h-5 text-yellow-400" />
-              <span className="font-display text-3xl text-yellow-400">2</span>
+              <span className="font-display text-3xl text-yellow-400">{stats.first}</span>
             </div>
             <p className="text-sm text-muted-foreground">1st Place</p>
           </div>
           <div className="bg-card-gradient border border-border rounded-xl p-6 text-center">
             <div className="flex items-center justify-center gap-2 mb-2">
               <Medal className="w-5 h-5 text-gray-300" />
-              <span className="font-display text-3xl text-gray-300">5</span>
+              <span className="font-display text-3xl text-gray-300">{stats.second}</span>
             </div>
             <p className="text-sm text-muted-foreground">2nd Place</p>
           </div>
           <div className="bg-card-gradient border border-border rounded-xl p-6 text-center">
             <div className="flex items-center justify-center gap-2 mb-2">
               <Medal className="w-5 h-5 text-amber-600" />
-              <span className="font-display text-3xl text-amber-600">8</span>
+              <span className="font-display text-3xl text-amber-600">{stats.third}</span>
             </div>
             <p className="text-sm text-muted-foreground">3rd Place</p>
           </div>
           <div className="bg-card-gradient border border-border rounded-xl p-6 text-center">
             <div className="flex items-center justify-center gap-2 mb-2">
               <TrendingUp className="w-5 h-5 text-primary" />
-              <span className="font-display text-3xl text-primary">6</span>
+              <span className="font-display text-3xl text-primary">{stats.pbs}</span>
             </div>
             <p className="text-sm text-muted-foreground">Personal Bests</p>
+          </div>
+        </motion.div>
+
+        {/* Upcoming Events */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-12"
+        >
+          <div className="flex items-center gap-3 mb-6">
+            <Calendar className="w-6 h-6 text-primary" />
+            <h3 className="font-display text-2xl">Upcoming Events</h3>
+          </div>
+          <div className="grid md:grid-cols-3 gap-4">
+            {upcomingEvents.map((event, index) => (
+              <motion.div
+                key={event.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                className="bg-card-gradient border border-border rounded-xl p-5 hover:border-primary/50 transition-colors"
+              >
+                <h4 className="font-medium text-foreground mb-2">{event.name}</h4>
+                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-1">
+                  <Clock className="w-4 h-4" />
+                  <span>{event.date}</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <MapPin className="w-4 h-4" />
+                  <span>{event.location}</span>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </div>
