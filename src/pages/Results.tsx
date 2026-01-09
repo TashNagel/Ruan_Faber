@@ -236,6 +236,114 @@ const allCompetitions = [
     ]
   },
   {
+    id: "nws-age-group-1-2-2024",
+    name: "NWS Age Group 1 & 2",
+    status: "Completed",
+    date: "Nov 9-10, 2024",
+    location: "Potchefstroom, NW, RSA",
+    year: "2024",
+    results: []
+  },
+  {
+    id: "nw-short-course-2024",
+    name: "North West Short Course Championship",
+    status: "Completed",
+    date: "Oct 4, 2024",
+    location: "Hartebeespoort, NW, RSA",
+    year: "2024",
+    results: [
+      { event: "50 S Fly", time: "28.57", imp: "+0.00", place: "4th" },
+      { event: "50 S Free", time: "26.55", imp: "-0.98", place: "4th" },
+      { event: "100 S Free", time: "1:00.50", imp: "-1.10", place: "5th" },
+    ]
+  },
+  {
+    id: "nws-spring-splash-2024",
+    name: "NWS Spring Splash Sprint",
+    status: "Completed",
+    date: "Sep 7, 2024",
+    location: "Potchefstroom, NW, RSA",
+    year: "2024",
+    results: [
+      { event: "50 S Fly", time: "28.57", imp: null, place: "3rd" },
+      { event: "50 S Free", time: "27.53", imp: null, place: "6th" },
+      { event: "100 S Free", time: "1:01.60", imp: null, place: "6th" },
+    ]
+  },
+  {
+    id: "sa-schools-2024",
+    name: "SA Schools Championship",
+    status: "Completed",
+    date: "Apr 19-21, 2024",
+    location: "Gqeberha, EC, RSA",
+    year: "2024",
+    results: [
+      { event: "50 L Fly", time: "29.50", imp: "+0.46", place: "12th" },
+      { event: "100 L Back", time: "1:08.89", imp: "-1.39", place: "11th" },
+      { event: "50 L Back", time: "32.05", imp: "-0.01", place: "12th" },
+    ]
+  },
+  {
+    id: "nw-school-champs-2024",
+    name: "NW School Championships",
+    status: "Completed",
+    date: "Feb 23-24, 2024",
+    location: "Potchefstroom, NW, RSA",
+    year: "2024",
+    results: [
+      { event: "100 L Free", time: "1:01.12", imp: "+0.06", place: "6th" },
+      { event: "50 L Fly", time: "29.46", imp: "+0.42", place: "4th" },
+      { event: "200 L Free", time: "2:18.39", imp: null, place: "4th" },
+    ]
+  },
+  {
+    id: "nts-feb-open-2024",
+    name: "NTS February Open Age Group",
+    status: "Completed",
+    date: "Feb 16-17, 2024",
+    location: "Pretoria, GP, RSA",
+    year: "2024",
+    results: [
+      { event: "100 L Free", time: "1:01.64", imp: "+0.58", place: "4th" },
+      { event: "50 L Back", time: "37.86", imp: "+2.87", place: "2nd" },
+    ]
+  },
+  {
+    id: "inter-provincial-2024",
+    name: "4 + 1 Inter Provincial Gala",
+    status: "Completed",
+    date: "Jan 27-28, 2024",
+    location: "Bloemfontein, FS, RSA",
+    year: "2024",
+    results: [
+      { event: "100 L Fly", time: "1:08.13", imp: "+2.13", place: "4th" },
+    ]
+  },
+  {
+    id: "nws-long-course-2023",
+    name: "NWS Long Course Championships",
+    status: "Completed",
+    date: "Dec 6-10, 2023",
+    location: "Potchefstroom, NW, RSA",
+    year: "2023",
+    results: [
+      { event: "100 L Free", time: "1:01.06", imp: null, place: "1st" },
+      { event: "50 L Fly", time: "29.04", imp: null, place: "1st" },
+      { event: "50 L Free", time: "27.81", imp: null, place: "2nd" },
+    ]
+  },
+  {
+    id: "provincial-gala-2023",
+    name: "4+1 Provincial Gala",
+    status: "Completed",
+    date: "Jan 28, 2023",
+    location: "Potchefstroom, NW, RSA",
+    year: "2023",
+    results: [
+      { event: "100 L Fly", time: "1:12.35", imp: null, place: "4th" },
+    ]
+  },
+  {
     id: "sa-regional-aquatic-2022",
     name: "SA Regional Aquatic Champs 2022",
     status: "Completed",
