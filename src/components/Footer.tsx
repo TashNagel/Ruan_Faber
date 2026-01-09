@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
     <footer className="py-8 bg-card-gradient border-t border-border">
@@ -9,6 +11,21 @@ const Footer = () => {
             <span className="text-muted-foreground font-sans text-sm font-normal ml-3">
               Professional Swimmer
             </span>
+          </div>
+          
+          <div className="flex items-center gap-6">
+            <Link 
+              to="/terms" 
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Terms & Conditions
+            </Link>
+            <Link 
+              to="/privacy" 
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Privacy Policy
+            </Link>
           </div>
           
           <p className="text-sm text-muted-foreground">

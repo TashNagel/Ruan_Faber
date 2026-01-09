@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const navLinks = [
-  { href: "#results", label: "Results" },
-  { href: "#achievements", label: "Achievements" },
-  { href: "#about", label: "About" },
-  { href: "#donate", label: "Donate" },
-  { href: "#contact", label: "Contact" },
+  { href: "#results", label: "Results", isExternal: false },
+  { href: "#achievements", label: "Achievements", isExternal: false },
+  { href: "#about", label: "About", isExternal: false },
+  { href: "/gallery", label: "Gallery", isExternal: true },
+  { href: "/media", label: "Media", isExternal: true },
+  { href: "#donate", label: "Donate", isExternal: false },
+  { href: "#contact", label: "Contact", isExternal: false },
 ];
 
 const Navigation = () => {
@@ -41,13 +44,23 @@ const Navigation = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-300"
-              >
-                {link.label}
-              </a>
+              link.isExternal ? (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-300"
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-300"
+                >
+                  {link.label}
+                </a>
+              )
             ))}
             <a
               href="#contact"
@@ -78,14 +91,25 @@ const Navigation = () => {
           >
             <nav className="container mx-auto px-6 py-6 flex flex-col gap-4">
               {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors duration-300"
-                >
-                  {link.label}
-                </a>
+                link.isExternal ? (
+                  <Link
+                    key={link.href}
+                    to={link.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors duration-300"
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors duration-300"
+                  >
+                    {link.label}
+                  </a>
+                )
               ))}
               <a
                 href="#contact"
