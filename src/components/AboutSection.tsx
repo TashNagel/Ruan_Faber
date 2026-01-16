@@ -75,6 +75,10 @@ const AboutSection = () => {
                 <span className="text-xs text-muted-foreground block">Team</span>
                 <span className="text-foreground font-medium">Swim Star Aquatics Rtb</span>
               </div>
+              <div className="px-4 py-2 bg-secondary rounded-lg border border-border">
+                <span className="text-xs text-muted-foreground block">Coach</span>
+                <span className="text-foreground font-medium">Helen Tzerefos</span>
+              </div>
             </div>
           </motion.div>
         </div>
