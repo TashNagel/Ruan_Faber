@@ -15,6 +15,10 @@ import fieldsCollegeImage from "@/assets/ruan_faber_008.jpeg";
 import lifeguardImage from "@/assets/ruan_faber_011.jpeg";
 import swimmingSAImage from "@/assets/ruan_faber_012.jpeg";
 import divingStartImage from "@/assets/ruan_faber_014.jpeg";
+import midmarSharonvanRouwndaalImage from "@/assets/Ruan_faber_017_Sharon van Rouwendaal.jpeg";
+import signatureSharonvanRouwndaalImage from "@/assets/Ruan_faber_017a_Sharon van Rouwendaal_signature.jpeg";
+import PennyHeynsImage from "@/assets/Ruan_faber_021_penny_heyns.jpeg";
+import pieterCoetzeeImage from "@/assets/Ruan_faber_020_pieter_coetzee.jpeg";
 
 
 const galleryImages = [
@@ -32,6 +36,10 @@ const galleryImages = [
   { id: 12, title: "Lifeguard", category: "Lifesaving", image: lifeguardImage },
   { id: 13, title: "Swimming South Africa", category: "Competition", image: swimmingSAImage },
   { id: 14, title: "Diving Start", category: "Training", image: divingStartImage },
+  { id: 15, title: "Midmar Sharon van Rouwndaal", category: "Idol Moment", image: midmarSharonvanRouwndaalImage },
+  { id: 16, title: "Midmar Sharon van Rouwndaal Signature", category: "Idol Moment", image: signatureSharonvanRouwndaalImage },
+  { id: 17, title: "Penny Heyns", category: "Idol Moment", image: PennyHeynsImage },
+  { id: 18, title: "Pieter Coetzee", category: "Idol Moment", image: pieterCoetzeeImage },
 
 ];
 
@@ -95,6 +103,7 @@ const Gallery = () => {
               </motion.div>
             ))}
           </div>
+
         </div>
       </main>
     </div>

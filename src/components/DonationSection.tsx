@@ -30,7 +30,7 @@ const DonationSection = () => {
             </span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            I've been selected to represent at an international swimming event in Italy. 
+            I've been selected to represent at an international swimming event in Italy.
             Your support will help cover travel, accommodation, and competition expenses.
           </p>
         </motion.div>
@@ -47,7 +47,7 @@ const DonationSection = () => {
               <MapPin className="w-7 h-7 text-primary" />
             </div>
             <h3 className="font-semibold text-lg mb-2">Destination</h3>
-            <p className="text-muted-foreground">Italy 🇮🇹</p>
+            <p className="text-muted-foreground">Italy</p>
           </motion.div>
 
           <motion.div

@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, Heart, Users, Waves, Award, Calendar, MapPin } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import midmarImage from "@/assets/gallery-midmar-2024.jpeg";
-import schoolsImage from "@/assets/ruan_faber_011.jpeg";
+import midmarImage from "@/assets/Ruan_faber_023.jpeg";
+import schoolsImage from "@/assets/Ruan_faber_018.jpeg";
+import timekeepImage from "@/assets/Ruan_faber_019.jpeg";
 
 const charityActivities = [
   {
@@ -14,7 +15,6 @@ const charityActivities = [
     date: "Annual Event",
     location: "Midmar Dam, KZN",
     image: midmarImage,
-    image: midmarImage,
   },
   {
     title: "School Swimming Programs",
@@ -23,7 +23,14 @@ const charityActivities = [
     date: "Ongoing",
     location: "Various Schools",
     image: schoolsImage,
-    image: schoolsImage,
+  },
+  {
+    title: "SASA-II Timekeeper",
+    icon: Users,
+    description: "Volunteered as a timekeeper at swimming galas, supporting children with intellectual disabilities in a competitive and inclusive sporting environment.",
+    date: "2022",
+    location: "Fields College Rustenburg",
+    image: timekeepImage,
   },
 ];
 
@@ -79,7 +86,7 @@ const Charity = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl overflow-hidden hover:border-primary/30 transition-all"
-                className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl overflow-hidden hover:border-primary/30 transition-all"
+
               >
                 <div className="flex flex-col lg:flex-row">
                   {activity.image && (
@@ -92,43 +99,36 @@ const Charity = () => {
                     </div>
                   )}
                   <div className="flex-1 p-8">
+
                     <div className="flex items-start gap-4 mb-4">
                       <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
                         <activity.icon className="w-6 h-6 text-primary" />
                       </div>
                       <h3 className="text-2xl font-bold">{activity.title}</h3>
                     </div>
-                  )}
-                    <div className="flex-1 p-8">
-                      <div className="flex items-start gap-4 mb-4">
-                        <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                          <activity.icon className="w-6 h-6 text-primary" />
-                        </div>
-                        <h3 className="text-2xl font-bold">{activity.title}</h3>
+                    <p className="text-muted-foreground mb-4 leading-relaxed">
+                      {activity.description}
+                    </p>
+                    <div className="flex flex-wrap gap-4 text-sm">
+                      <div className="inline-flex items-center gap-2 text-muted-foreground">
+                        <Calendar className="w-4 h-4 text-primary" />
+                        {activity.date}
                       </div>
-                      <p className="text-muted-foreground mb-4 leading-relaxed">
-                        {activity.description}
-                      </p>
-                      <div className="flex flex-wrap gap-4 text-sm">
-                        <div className="inline-flex items-center gap-2 text-muted-foreground">
-                          <Calendar className="w-4 h-4 text-primary" />
-                          {activity.date}
-                        </div>
-                        <div className="inline-flex items-center gap-2 text-muted-foreground">
-                          <MapPin className="w-4 h-4 text-primary" />
-                          {activity.location}
-                        </div>
+                      <div className="inline-flex items-center gap-2 text-muted-foreground">
+                        <MapPin className="w-4 h-4 text-primary" />
+                        {activity.location}
                       </div>
                     </div>
                   </div>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Impact Section */}
-      <section className="py-16 bg-muted/30">
+      < section className="py-16 bg-muted/30" >
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -192,10 +192,10 @@ const Charity = () => {
             </motion.div>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* CTA Section */}
-      <section className="py-16">
+      < section className="py-16" >
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -219,10 +219,10 @@ const Charity = () => {
             </a>
           </motion.div>
         </div>
-      </section>
+      </section >
 
       <Footer />
-    </div>
+    </div >
   );
 };
 

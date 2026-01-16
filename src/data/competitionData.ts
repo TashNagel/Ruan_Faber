@@ -500,9 +500,9 @@ export const teams = [
 ];
 
 export const upcomingEvents = [
-  { name: "NW Age Group Champs", date: "Jan 20-22, 2026", location: "Klerksdorp, NW" },
-  { name: "SA Junior Nationals", date: "Mar 5-8, 2026", location: "Cape Town, WC" },
-  { name: "Africa Youth Games", date: "Apr 12-15, 2026", location: "Lagos, Nigeria" },
+  { name: "Open Water Championships", date: "Jan 24, 2026", location: "Pretoria, GP" },
+  { name: "SA Youth (17-25yrs) National Championships", date: "Mar 18-20, 2026", location: "Gqeberha, EC" },
+  { name: "Rossini Swim Cup", date: "Jun 21-22, 2026", location: "Pesaro, Italy" },
 ];
 
 // Helper function to calculate stats from all competitions
