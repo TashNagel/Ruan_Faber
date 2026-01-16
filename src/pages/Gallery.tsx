@@ -1,16 +1,12 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Camera, Image as ImageIcon } from "lucide-react";
+import { ArrowLeft, Camera } from "lucide-react";
+import midmarImage from "@/assets/gallery-midmar-2024.jpeg";
+import saSchoolsImage from "@/assets/gallery-sa-schools-2023.jpeg";
 
 const galleryImages = [
-  { id: 1, title: "NWS Championships 2025", category: "Competition" },
-  { id: 2, title: "Training Session", category: "Training" },
-  { id: 3, title: "SA Schools Championship", category: "Competition" },
-  { id: 4, title: "Medal Ceremony", category: "Awards" },
-  { id: 5, title: "Pool Practice", category: "Training" },
-  { id: 6, title: "Team Photo", category: "Events" },
-  { id: 7, title: "Regional Finals", category: "Competition" },
-  { id: 8, title: "Warm-up Routine", category: "Training" },
+  { id: 1, title: "Midmar Mile 2024", category: "Open Water", image: midmarImage },
+  { id: 2, title: "SA Schools 2023", category: "Competition", image: saSchoolsImage },
 ];
 
 const Gallery = () => {
@@ -61,14 +57,18 @@ const Gallery = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="group relative aspect-square bg-card border border-border rounded-xl overflow-hidden hover:border-primary/50 transition-colors"
+                className="group relative aspect-[3/4] bg-card border border-border rounded-xl overflow-hidden hover:border-primary/50 transition-colors"
               >
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-muted-foreground">
-                  <ImageIcon className="w-12 h-12 mb-3 opacity-30" />
-                  <p className="text-sm font-medium">{image.title}</p>
-                  <span className="text-xs text-primary mt-1">{image.category}</span>
+                <img 
+                  src={image.image} 
+                  alt={image.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                  <p className="text-sm font-medium text-foreground">{image.title}</p>
+                  <span className="text-xs text-primary">{image.category}</span>
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               </motion.div>
             ))}
           </div>
