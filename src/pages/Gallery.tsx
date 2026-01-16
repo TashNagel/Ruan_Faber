@@ -3,10 +3,18 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, Camera } from "lucide-react";
 import midmarImage from "@/assets/gallery-midmar-2024.jpeg";
 import saSchoolsImage from "@/assets/gallery-sa-schools-2023.jpeg";
+import nwChampionshipImage from "@/assets/gallery-nw-championship.jpeg";
+import nwSchoolsImage from "@/assets/gallery-nw-schools.jpeg";
+import level3Image from "@/assets/gallery-level3-championship.jpeg";
+import coachHelenImage from "@/assets/gallery-coach-helen.jpeg";
 
 const galleryImages = [
-  { id: 1, title: "Midmar Mile 2024", category: "Open Water", image: midmarImage },
-  { id: 2, title: "SA Schools 2023", category: "Competition", image: saSchoolsImage },
+  { id: 1, title: "North West Championship", category: "Competition", image: nwChampionshipImage },
+  { id: 2, title: "North West Schools Championship", category: "Schools", image: nwSchoolsImage },
+  { id: 3, title: "Level 3 Championship", category: "Competition", image: level3Image },
+  { id: 4, title: "Coach Helen", category: "Team", image: coachHelenImage },
+  { id: 5, title: "Midmar Mile 2024", category: "Open Water", image: midmarImage },
+  { id: 6, title: "SA Schools 2023", category: "Competition", image: saSchoolsImage },
 ];
 
 const Gallery = () => {
