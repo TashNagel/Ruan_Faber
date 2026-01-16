@@ -7,14 +7,30 @@ import nwChampionshipImage from "@/assets/gallery-nw-championship.jpeg";
 import nwSchoolsImage from "@/assets/gallery-nw-schools.jpeg";
 import level3Image from "@/assets/gallery-level3-championship.jpeg";
 import coachHelenImage from "@/assets/gallery-coach-helen.jpeg";
+import breaststrokeImage from "@/assets/gallery-breaststroke.jpeg";
+import coachHelenEarlyImage from "@/assets/gallery-coach-helen-early.jpeg";
+import poolTrainingImage from "@/assets/gallery-pool-training.jpeg";
+import midmarMileImage from "@/assets/gallery-midmar-mile.jpeg";
+import fieldsCollegeImage from "@/assets/gallery-fields-college.jpeg";
+import lifeguardImage from "@/assets/gallery-lifeguard.jpeg";
+import swimmingSAImage from "@/assets/gallery-swimming-sa.jpeg";
+import divingStartImage from "@/assets/gallery-diving-start.jpeg";
 
 const galleryImages = [
   { id: 1, title: "North West Championship", category: "Competition", image: nwChampionshipImage },
   { id: 2, title: "North West Schools Championship", category: "Schools", image: nwSchoolsImage },
   { id: 3, title: "Level 3 Championship", category: "Competition", image: level3Image },
-  { id: 4, title: "Coach Helen", category: "Team", image: coachHelenImage },
+  { id: 4, title: "Coach Helen 2024", category: "Team", image: coachHelenImage },
   { id: 5, title: "Midmar Mile 2024", category: "Open Water", image: midmarImage },
   { id: 6, title: "SA Schools 2023", category: "Competition", image: saSchoolsImage },
+  { id: 7, title: "Breaststroke Training", category: "Training", image: breaststrokeImage },
+  { id: 8, title: "Coach Helen - Early Days", category: "Team", image: coachHelenEarlyImage },
+  { id: 9, title: "Pool Training", category: "Training", image: poolTrainingImage },
+  { id: 10, title: "aQuellé Midmar Mile", category: "Open Water", image: midmarMileImage },
+  { id: 11, title: "Fields College", category: "Schools", image: fieldsCollegeImage },
+  { id: 12, title: "Lifeguard", category: "Lifesaving", image: lifeguardImage },
+  { id: 13, title: "Swimming South Africa", category: "Competition", image: swimmingSAImage },
+  { id: 14, title: "Diving Start", category: "Training", image: divingStartImage },
 ];
 
 const Gallery = () => {
@@ -81,14 +97,6 @@ const Gallery = () => {
             ))}
           </div>
 
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-            className="text-center text-muted-foreground mt-12"
-          >
-            More photos coming soon...
-          </motion.p>
         </div>
       </main>
     </div>
