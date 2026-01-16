@@ -1,0 +1,4 @@
+{ id: 15, title: "Midmar Sharon van Rouwndaal", category: "Idol Moment", image: midmarSharonvanRouwndaalImage },
+  { id: 16, title: "Midmar Sharon van Rouwndaal Signature", category: "Idol Moment", image: signatureSharonvanRouwndaalImage },
+  { id: 17, title: "Penny Heyns", category: "Idol Moment", image: PennyHeynsImage },
+  { id: 18, title: "Pieter Coetzee", category: "Idol Moment", image: pieterCoetzeeImage },
