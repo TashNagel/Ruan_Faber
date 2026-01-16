@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, Heart, Users, Waves, Award, Calendar, MapPin } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import midmarImage from "@/assets/gallery-midmar-2024.jpeg";
+import schoolsImage from "@/assets/gallery-sa-schools-2023.jpeg";
 
 const charityActivities = [
   {
@@ -11,7 +13,7 @@ const charityActivities = [
     description: "Successfully completed the iconic Midmar Mile open water swimming event, the world's largest open water swimming event held annually in KwaZulu-Natal.",
     date: "Annual Event",
     location: "Midmar Dam, KZN",
-    image: null,
+    image: midmarImage,
   },
   {
     title: "School Swimming Programs",
@@ -19,7 +21,7 @@ const charityActivities = [
     description: "Visiting local schools to teach children essential swimming skills and water safety. Helping young learners gain confidence in the water while promoting the importance of learning to swim.",
     date: "Ongoing",
     location: "Various Schools",
-    image: null,
+    image: schoolsImage,
   },
 ];
 
@@ -74,16 +76,25 @@ const Charity = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-8 hover:border-primary/30 transition-all"
+                className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl overflow-hidden hover:border-primary/30 transition-all"
               >
-                <div className="flex flex-col md:flex-row gap-6">
-                  <div className="flex-shrink-0">
-                    <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
-                      <activity.icon className="w-8 h-8 text-primary" />
+                <div className="flex flex-col lg:flex-row">
+                  {activity.image && (
+                    <div className="lg:w-1/3 flex-shrink-0">
+                      <img 
+                        src={activity.image} 
+                        alt={activity.title}
+                        className="w-full h-48 lg:h-full object-cover"
+                      />
                     </div>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold mb-3">{activity.title}</h3>
+                  )}
+                  <div className="flex-1 p-8">
+                    <div className="flex items-start gap-4 mb-4">
+                      <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                        <activity.icon className="w-6 h-6 text-primary" />
+                      </div>
+                      <h3 className="text-2xl font-bold">{activity.title}</h3>
+                    </div>
                     <p className="text-muted-foreground mb-4 leading-relaxed">
                       {activity.description}
                     </p>
