@@ -3,8 +3,7 @@ import { Heart, MapPin, Target, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const DonationSection = () => {
-  // Replace with your actual BackABuddy campaign URL
-  const backABuddyUrl = "https://www.backabuddy.co.za";
+  const backABuddyUrl = "https://www.backabuddy.co.za/campaign/ruan-faber-italy-swim-tour";
 
   return (
     <section id="donate" className="py-24 relative overflow-hidden">

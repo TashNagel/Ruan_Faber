@@ -9,6 +9,7 @@ const navLinks = [
   { href: "#about", label: "About", isExternal: false },
   { href: "/gallery", label: "Gallery", isExternal: true },
   { href: "/media", label: "Media", isExternal: true },
+  { href: "/charity", label: "Charity", isExternal: true },
   { href: "#donate", label: "Donate", isExternal: false },
   { href: "#contact", label: "Contact", isExternal: false },
 ];

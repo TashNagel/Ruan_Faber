@@ -9,6 +9,7 @@ import Gallery from "./pages/Gallery";
 import Media from "./pages/Media";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
+import Charity from "./pages/Charity";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/results" element={<Results />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/media" element={<Media />} />
+          <Route path="/charity" element={<Charity />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
