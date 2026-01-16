@@ -14,6 +14,7 @@ const charityActivities = [
     date: "Annual Event",
     location: "Midmar Dam, KZN",
     image: midmarImage,
+    image: midmarImage,
   },
   {
     title: "School Swimming Programs",
@@ -21,6 +22,7 @@ const charityActivities = [
     description: "Visiting local schools to teach children essential swimming skills and water safety. Helping young learners gain confidence in the water while promoting the importance of learning to swim.",
     date: "Ongoing",
     location: "Various Schools",
+    image: schoolsImage,
     image: schoolsImage,
   },
 ];
@@ -77,6 +79,7 @@ const Charity = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl overflow-hidden hover:border-primary/30 transition-all"
+                className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl overflow-hidden hover:border-primary/30 transition-all"
               >
                 <div className="flex flex-col lg:flex-row">
                   {activity.image && (
@@ -95,21 +98,29 @@ const Charity = () => {
                       </div>
                       <h3 className="text-2xl font-bold">{activity.title}</h3>
                     </div>
-                    <p className="text-muted-foreground mb-4 leading-relaxed">
-                      {activity.description}
-                    </p>
-                    <div className="flex flex-wrap gap-4 text-sm">
-                      <div className="inline-flex items-center gap-2 text-muted-foreground">
-                        <Calendar className="w-4 h-4 text-primary" />
-                        {activity.date}
+                  )}
+                    <div className="flex-1 p-8">
+                      <div className="flex items-start gap-4 mb-4">
+                        <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                          <activity.icon className="w-6 h-6 text-primary" />
+                        </div>
+                        <h3 className="text-2xl font-bold">{activity.title}</h3>
                       </div>
-                      <div className="inline-flex items-center gap-2 text-muted-foreground">
-                        <MapPin className="w-4 h-4 text-primary" />
-                        {activity.location}
+                      <p className="text-muted-foreground mb-4 leading-relaxed">
+                        {activity.description}
+                      </p>
+                      <div className="flex flex-wrap gap-4 text-sm">
+                        <div className="inline-flex items-center gap-2 text-muted-foreground">
+                          <Calendar className="w-4 h-4 text-primary" />
+                          {activity.date}
+                        </div>
+                        <div className="inline-flex items-center gap-2 text-muted-foreground">
+                          <MapPin className="w-4 h-4 text-primary" />
+                          {activity.location}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
               </motion.div>
             ))}
           </div>
