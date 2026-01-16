@@ -189,11 +189,11 @@ const Charity = () => {
               Your contribution helps continue these community initiatives and supports the journey to international competitions.
             </p>
             <a
-              href="/#donate"
+              href="/#contact"
               className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-full font-semibold hover:bg-primary/90 transition-colors"
             >
               <Heart className="w-5 h-5" />
-              Donate Now
+              Get in Touch
             </a>
           </motion.div>
         </div>
