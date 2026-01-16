@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
+import tnLogo from "../assets/tnWEBSTUDIO logo.png";
+
 
 const sponsors = [
-  { name: "Sponsor 1", placeholder: true },
+  { name: "tnWEBSTUDIO", logo: tnLogo, placeholder: false },
   { name: "Sponsor 2", placeholder: true },
   { name: "Sponsor 3", placeholder: true },
-  { name: "Sponsor 4", placeholder: true },
-  { name: "Sponsor 5", placeholder: true },
+
 ];
 
 const SponsorsSection = () => {
@@ -27,7 +28,7 @@ const SponsorsSection = () => {
           </h2>
         </motion.div>
 
-        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 max-w-4xl mx-auto">
+        <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16 max-w-6xl mx-auto">
           {sponsors.map((sponsor, index) => (
             <motion.div
               key={sponsor.name}
@@ -38,15 +39,17 @@ const SponsorsSection = () => {
               className="flex items-center justify-center"
             >
               {sponsor.placeholder ? (
-                <div className="w-32 h-16 md:w-40 md:h-20 bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl flex items-center justify-center text-muted-foreground text-sm font-medium hover:border-primary/30 transition-colors">
+                <div className="w-56 h-28 md:w-80 md:h-36 bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl flex items-center justify-center text-muted-foreground text-sm font-medium hover:border-primary/30 transition-colors">
                   <span className="opacity-50">Your Logo Here</span>
                 </div>
               ) : (
-                <img
-                  src={sponsor.name}
-                  alt={sponsor.name}
-                  className="h-12 md:h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                />
+                <div className="w-56 h-28 md:w-80 md:h-36 bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl flex items-center justify-center p-4 hover:border-primary/30 transition-colors">
+                  <img
+                    src={sponsor.logo}
+                    alt={sponsor.name}
+                    className="max-h-full max-w-full object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                  />
+                </div>
               )}
             </motion.div>
           ))}
