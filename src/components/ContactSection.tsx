@@ -49,7 +49,7 @@ const ContactSection = () => {
           <p className="text-muted-foreground text-sm">management@ruanfaber.co.za</p>
         </motion.a>
 
-        <motion.a href="https://instagram.com/ruan_faber" target="_blank" rel="noopener noreferrer" initial={{
+        <motion.a href="https://www.instagram.com/ruan_faber_swimmer" target="_blank" rel="noopener noreferrer" initial={{
           opacity: 0,
           y: 30
         }} whileInView={{
@@ -65,10 +65,10 @@ const ContactSection = () => {
             <Instagram className="w-6 h-6 text-primary" />
           </div>
           <h3 className="font-display text-xl mb-2">Instagram</h3>
-          <p className="text-muted-foreground text-sm">@ruan_faber</p>
+          <p className="text-muted-foreground text-sm">@ruan_faber_swimmer</p>
         </motion.a>
 
-        <motion.a href="https://facebook.com/#" target="_blank" rel="noopener noreferrer" initial={{
+        <motion.a href="https://www.facebook.com/RuanFaberSwimmer/" target="_blank" rel="noopener noreferrer" initial={{
           opacity: 0,
           y: 30
         }} whileInView={{
@@ -84,7 +84,7 @@ const ContactSection = () => {
             <Facebook className="w-6 h-6 text-primary" />
           </div>
           <h3 className="font-display text-xl mb-2">Facebook</h3>
-          <p className="text-muted-foreground text-sm">Ruan Faber</p>
+          <p className="text-muted-foreground text-sm">RuanFaberSwimmer</p>
         </motion.a>
       </div>
 
